@@ -6,6 +6,7 @@ import requests
 import json
 import urllib.request
 import crud
+from data import categories
 
 
 app = Flask(__name__)
@@ -20,6 +21,14 @@ def show_homepage():
 @app.route('/goingout')
 def show_out_selections():
     return render_template("goingout.html")
+
+@app.route('/goingout', methods = ['POST'])
+def get_quiz():
+    flavors = categories.flavors
+    strengths = categories.strengths
+    spirit_choice = categories.choices
+    options = {'flavors' : flavors, 'strengths' : strengths, 'spirits' : spirit_choice}
+    return options
 
 @app.route('/stayin')
 def show_in_selections():

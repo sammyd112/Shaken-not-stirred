@@ -1,15 +1,21 @@
 <!doctype html>
 <title>Out!</title>
     <head>
-    <h1>SHAKEN NOT STIRRED</h1>
+        <h1>SHAKEN NOT STIRRED</h1>
     </head>
     <body>
         <p> Out for a night on the town? Can't decide what to order? We've got you covered!</p>
         <p> Take this short quiz to find cocktails compatiable to you!</p>
-        <button id="quiz">Quiz Me!</button>
+        <form id="quiz" method="POST">
+            <button>Quiz Me!</button>
+        </form>
         <br>
         <br>
+        <div id="question1"></div>
         <br>
+        <div id="question2"></div>
+        <br>
+        <div id="question3"></div>
         <div id="quiz_result"></div>
     </body>
 <script type="text/javascript" src="/static/events.js"></script>

@@ -30,3 +30,5 @@ whiskey_like = ['Southern Comfort', 'Whiskey', 'Fireball', 'Jameson', 'Scotch', 
 rums = ['Malibu', 'Dark Rum', 'Coconut Rum', 'Cachaca', 'Rum']
 
 flavors = ['sweet', 'sour', 'neutral', 'fruity', 'bitter', 'creamy', 'tropical', 'citrus', 'semi-sweet']
+strengths = ['Weak', 'Moderate', 'Strong', "So strong, it's a fancy way to pour liquor into a glass"]
+choices = ['Vodka', 'Rum', 'Gin', 'Whiskey/Bourbon', 'Tequila', 'Im Not Particular']
