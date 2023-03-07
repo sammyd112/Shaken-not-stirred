@@ -30,10 +30,15 @@ def get_search():
     drink = request.json['drink_input']
     print(drink)
     data = requests.get(f"http://www.thecocktaildb.com/api/json/v1/1/search.php?s={drink}")
-    data = data.json()
-    drink_data = data['drinks'][0]
-    final_data = crud.display_search(drink_data)
-    return final_data
+    if data != None:
+        data = data.json()
+        drink_data = data['drinks'][0]
+        final_data = crud.display_search(drink_data)
+        return final_data
+    if data == None:
+        drink_search = crud.display_cocktail(drink)
+        return drink_search
+
 
 
 if __name__ == "__main__":

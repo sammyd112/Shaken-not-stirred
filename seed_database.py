@@ -12,11 +12,15 @@ from pprint import pprint
 from data.dict import cocktail_data
 from data import categories
 
-os.system("dropdb cocktails")
-os.system("createdb cocktails")
+os.system('dropdb shakennotstirred')
+os.system('createdb shakennotstirred')
+
+model.connect_to_db(app)
+app.app_context().push()
+model.db.create_all()
 
 
-cocktails_in_db= []
+# """seeding for cocktails datatable"""
 for cocktail, key in cocktail_data.items():
     name = cocktail
     for attribute, value in key.items():
@@ -37,14 +41,21 @@ for cocktail, key in cocktail_data.items():
                 flavor3 = None
             
     cocktail = crud.create_cocktail(name, strength, flavor, flavor2, flavor3)
-    cocktails_in_db.append(cocktail) 
+    model.db.session.add(cocktail)
 
 
-ingredients_in_db= set()
+# """Seeding for ingredients datatable"""
+ingredients= set()
+ingredients_in_db = []
+names = []
 
 for cocktail, key in cocktail_data.items():
     for attribute in key:
         name = attribute
+        if name == 'Strength':
+            continue
+        elif name == 'Flavor':
+            continue
         if name in categories.spirits:
             type = 'Spirit'
             if name in categories.vodkas:
@@ -64,8 +75,10 @@ for cocktail, key in cocktail_data.items():
             subtype = None
         elif name in categories.beer:
             type = 'Beer'
+            subtype = None
         elif name in categories.fruits:
             type = 'Fruit'
+            subtype = None
         elif name in categories.cordials:
             type = 'Cordial'
             subtype = None
@@ -75,17 +88,31 @@ for cocktail, key in cocktail_data.items():
         else:
             type = None
             subtype = None
-        ingredient = crud.create_ingredient(name, type, subtype)  
-        ingredients_in_db.append(ingredient)
-        
-        
+        ingredients.add((name, type, subtype))
 
+for ingredient in ingredients:
+    name = ingredient[0]
+    type = ingredient[1]
+    subtype = ingredient[2]
+    db_ingredient = crud.create_ingredient(name, type, subtype)
+    ingredients_in_db.append(db_ingredient)
 
+model.db.session.add_all(ingredients_in_db)
+model.db.session.commit()
 
+"""Seeding for Recipe"""
+"""def create_recipe(cocktail_id, ingredient_id, part):"""
+recipe_in_db = []
+for cocktail, key in cocktail_data.items():
+    name = cocktail
+    for attribute, des in key.items():
+        if attribute == 'Flavor' or attribute == 'Strength':
+            continue
+        part = des
+        ingredient = crud.get_ingredient_by_name(attribute)
+        cocktail = crud.get_cocktail_by_name(name)
+        dbrecipe = crud.create_recipe(cocktail.cocktail_id, ingredient.ingredient_id, part)
+        recipe_in_db.append(dbrecipe)
 
-
-with app.app_context():
-    model.connect_to_db(app)
-    model.db.create_all()
-    model.db.session.add_all(cocktails_in_db, ingredients_in_db)
-    model.db.session.commit()
+model.db.session.add_all(recipe_in_db)
+model.db.session.commit()

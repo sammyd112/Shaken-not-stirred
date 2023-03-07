@@ -32,7 +32,7 @@ class Loved_Cocktail(db.Model):
                             db.ForeignKey('cocktails.cocktail_id'))
     
     def __repr__(self):
-        return f'<Loved Cocktail id={self.id} name={self.name}'
+        return f'<Loved Cocktail id={self.id} name={self.name}>'
     
 class Cocktail(db.Model):
     """A cocktail""" 
@@ -50,7 +50,7 @@ class Cocktail(db.Model):
     recipe = db.relationship("Recipe", back_populates="cocktail")
 
     def __repr__(self):
-        return f'<Cocktail cocktail_id={self.cocktail_id} name={self.name}'
+        return f'<Cocktail cocktail_id={self.cocktail_id} name={self.name}>'
 
 class Recipe(db.Model):
     """Cocktail Ingredients"""
@@ -89,7 +89,7 @@ class Ingredient(db.Model):
         return f'<Recipe ingredient_id={self.ingredient_id} name={self.name}'
 
 
-def connect_to_db(flask_app, db_uri="postgresql:///shakennotstirred", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///shakennotstirred", echo=False):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

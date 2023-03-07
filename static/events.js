@@ -1,15 +1,5 @@
 'use strict';
 // import * as crud from crud.py
-
-///Add event listener for homepage buttons
-// const stayinhome = document.querySelector('#home')
-
-
-
-// const goingout = document.querySelector('#out')
-// goingout.addEventListener('click', show_out_selections);
-
-
 // //Add event listener for search cocktail button//
 const searchCocktail = document.querySelector('#search_cocktail')
 searchCocktail.addEventListener("submit", (evt) => {
@@ -30,7 +20,7 @@ searchCocktail.addEventListener("submit", (evt) => {
     console.log(drinkData)
     document.getElementById('cocktail_result').innerHTML = `<div>${drinkData['name']}</div>
                                                           <br>
-                                                          <div> The Ingredients are as follows:</div>
+                                                          <div> The Ingredients are as follows: </div>
                                                           <div> ${drinkData['ingredients']}  </div>
                                                           <br>
                                                           <div> How to make: </div>

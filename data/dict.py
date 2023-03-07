@@ -24,7 +24,6 @@ cocktail_data = {
     'Amaretto': '1 part',
     'Sloe Gin': '1 part',
     'Orange Juice': '1 part',
-
   },
   'Appletini': {
     'Strength' : 'strong',
@@ -515,6 +514,13 @@ cocktail_data = {
     'Orange Juice': '1/4 part',
     'Enhancements': 'Salted Rim',
   },
+  'Martini' :{
+    'Strength' : "extrastrong",
+    'Flavor' : ['neutral'],
+    'Gin' : '3 parts',
+    'Dry Vermouth' : 'Splash',
+    'Enhancements' : 'Try "Dirty" which is to add 1/8 Olive Juice or "With a Twist" which is to add a twisted lemon wedge rind'
+  },
   'Melon Ball': {
     'Strength' : 'moderate',
     'Flavor' : ['sweet', 'citrus', 'tropical'],
@@ -599,6 +605,13 @@ cocktail_data = {
     'Angostura Bitters': 'Splash',
     'Orange Slice': '1 muddled',
     'Cherry': '1 muddled',
+  },
+  'OO7':{
+    'Strength' : 'Moderate',
+    'Flavor' : ['citrus', 'semi-sweet'],
+    'Orange Vodka' : '1 part',
+    'Orange Juice' : '1 part',
+    'Lemon-lime Soda' : '2 parts'
   },
   'Paloma': {
     'Strength' : 'moderate',
@@ -828,6 +841,13 @@ cocktail_data = {
     'Vodka': '3 parts',
     'Lime Juice': '1/4 part',
     'Sugar': '1/4 part',
+  },
+   'Martini' :{
+    'Strength' : "extrastrong",
+    'Flavor' : ['neutral'],
+    'Vodka' : '3 parts',
+    'Dry Vermouth' : 'Splash',
+    'Enhancements' : 'Try "Dirty" which is to add 1/8 Olive Juice or "With a Twist" which is to add a twisted lemon wedge rind'
   },
   'Vodka Sunrise': {
     'Strength' : 'moderate',
