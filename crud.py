@@ -14,6 +14,13 @@ def create_user(fname, email, password):
 
     return user
 
+def get_user_by_email(email):
+    """Return a user by email."""
+    return User.query.filter(User.email == email).first()
+
+def get_user_by_creds(email, password):
+    return User.query.filter(User.email ==email, User.password == password).first()
+
 def create_loved_cocktail(user_id, cocktail_id, name):
     """Create and return a loved cocktail."""
     loved_cocktail = Loved_Cocktail(user_id=user_id,

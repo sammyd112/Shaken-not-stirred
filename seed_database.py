@@ -116,3 +116,19 @@ for cocktail, key in cocktail_data.items():
 
 model.db.session.add_all(recipe_in_db)
 model.db.session.commit()
+
+
+
+"""Seeding for test Users"""
+
+for n in range(10):
+    fname = f'tester{n}'
+    email = f'user{n}@test.com' 
+    password = 'test'
+
+    user = crud.create_user(fname, email, password)
+    model.db.session.add(user)
+
+model.db.session.commit()
+
+

@@ -5,17 +5,17 @@ db = SQLAlchemy()
 class User(db.Model):
     """A user."""
 
-    __tablename__ = 'user'
+    __tablename__ = 'users'
 
     user_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
     fname = db.Column(db.String)
     email = db.Column(db.String, unique=True)
-    password = db.Column(db.String)
+    password = db.Column(db.String) 
 
     def __repr__(self):
-        return f'<User user_id={self.user_id} email={self.email}>'
+        return f'<User fname={self.fname} email={self.email}>'
 
     
 class Loved_Cocktail(db.Model):
@@ -27,7 +27,7 @@ class Loved_Cocktail(db.Model):
                    autoincrement = True,
                    primary_key = True,)
     user_id = db.Column(db.Integer, 
-                       db.ForeignKey('user.user_id'))
+                       db.ForeignKey('users.user_id'))
     cocktail_id = db.Column(db.Integer,
                             db.ForeignKey('cocktails.cocktail_id'))
     
