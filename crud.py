@@ -1,6 +1,7 @@
 '''CRUD operations.'''
 
 from model import User, Loved_Cocktail, Cocktail, Recipe, Ingredient, db, connect_to_db
+import random 
 
 def create_user(fname, email, password):
     """Create and return a new user."""
@@ -34,6 +35,9 @@ def create_cocktail(name, strength, flavor, flavor2, flavor3):
 
 def get_cocktail_by_name(name):
     return Cocktail.query.filter(Cocktail.name == name).first()
+
+def get_all_cocktails():
+    return Cocktail.query.all()
 
 def create_recipe(cocktail_id, ingredient_id, part):
     """Create and return a recipe"""
@@ -71,12 +75,20 @@ def display_search(drink):
 
 def display_cocktail(name):
     cocktail = get_cocktail_by_name(name)
-    recipes =  Recipe.query.filter(Recipe.cocktail_id == cocktail.cocktail_id).all()
-    instructions = []
-    for recipe in recipes:
-        ingredient = get_ingredient_by_id(recipe.ingredient_id)
-        instructions.append((ingredient.name, recipe.part))
-    return {'name' : cocktail.name, 'ingredients' : instructions}
+    if type(cocktail) != type(None):
+        recipes =  Recipe.query.filter(Recipe.cocktail_id == cocktail.cocktail_id).all()
+        instructions = []
+        for recipe in recipes:
+            ingredient = get_ingredient_by_id(recipe.ingredient_id)
+            instructions.append((ingredient.name, recipe.part))
+        return {'name' : cocktail.name, 'ingredients' : instructions}
+    else:
+        return {'Nothing' : name}
+
+def get_random_cocktail():
+    cocktails = get_all_cocktails()
+    cocktail = random.choice(cocktails)
+    return display_cocktail(cocktail.name)
 
 
 if __name__ == '__main__':

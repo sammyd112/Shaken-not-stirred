@@ -1,13 +1,13 @@
 <!doctype html>
-<title>Homepage</title>
-<head>
-<h1>SHAKEN NOT STIRRED</h1>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock %}
+{% block body %}
+    <br>
+    <br>
     <p>What are your plans for the night?</p>
     <br>
     <button onclick="window.location.href='http://localhost:5000/stayin';">I'm Stayin in Tonight!</button>
-    <br>
+    <span>
     <button onclick="window.location.href='http://localhost:5000/goingout';">I'm Already Out!</button>
-</body>
-<script type="text/javascript" src="/static/events.js"></script>
+    </span>
+{% endblock %}

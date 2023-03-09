@@ -1,21 +1,110 @@
 <!doctype html>
-<title>Out!</title>
-    <head>
-        <h1>SHAKEN NOT STIRRED</h1>
-    </head>
-    <body>
-        <p> Out for a night on the town? Can't decide what to order? We've got you covered!</p>
-        <p> Take this short quiz to find cocktails compatiable to you!</p>
-        <form id="quiz" method="POST">
-            <button>Quiz Me!</button>
-        </form>
-        <br>
-        <br>
-        <div id="question1"></div>
-        <br>
-        <div id="question2"></div>
-        <br>
-        <div id="question3"></div>
-        <div id="quiz_result"></div>
-    </body>
-<script type="text/javascript" src="/static/events.js"></script>
+{% extends 'base.html' %}
+    {% block title %}Going Out!{% endblock %}
+
+        {% block body %}
+        <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Take this short quiz to find cocktails compatiable to you!</h5>
+                <p class="card-text"> Out for a night on the town? Can't decide what to order? We've got you covered!</p>
+              </div>
+              <form id="quiz" method="POST">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#quizmodel">
+                    Quiz Me!
+                </button>
+              </form>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Cocktail Routlette</h5>
+                <p class="card-text">Have us choose a random cocktail for you! Want to make a spontaneous choice? Live a bit on the edge? Try out this feature!</p>
+              </div>
+              <form id="random">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#randommodel">
+                    Random Cocktail!
+                </button>
+              </form>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Shot Routlette</h5>
+                <p class="card-text">This is our danger game, proceed with caution.</p>
+              </div>
+              <form id="roulette">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#routlettemodel">
+                    Do Me Dirty!
+                </button>
+              </form>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="quizmodel" tabindex="-1" role="dialog" aria-labelledby="quizTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="question">Waiting</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="quiz-questions" method="post">
+                    <div class="modal-body" id="question-content">
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="exit">Close</button>
+                    <button type="button" class="btn btn-primary" id="next">Next Question</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="randommodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Cocktail Roulette</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="random-contents">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="routlettemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Russian Roulette</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="routlette-contents">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endblock %}
+        
+    {% block js %}
+    <script src="/static/quiz.jsx" type="text/jsx"></script>
+    <script type="text/javascript" src="/static/outevents.js"></script>
+    {% endblock %}
