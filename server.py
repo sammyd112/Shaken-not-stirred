@@ -7,6 +7,7 @@ import crud
 from data import categories
 from model import connect_to_db, db
 import random
+import json
 
 
 app = Flask(__name__)
@@ -22,7 +23,6 @@ def show_homepage():
 def login():
     email = request.form['email']
     password = request.form['password']
-
 
     user = crud.get_user_by_creds(email, password)
     if user == None:
@@ -67,7 +67,7 @@ def log_out():
 def show_out_selections():
     return render_template("goingout.html")
 
-@app.route('/goingout', methods = ['POST'])
+@app.route('/quizchoices')
 def get_quiz():
     flavors = categories.flavors
     strengths = categories.strengths
@@ -87,15 +87,17 @@ def get_russian_routlette():
     mixer = random.choice(categories.mixers)
     return jsonify({'spirit' : spirit, 'cordial' : cordial, 'ingredient' : mixer})
 
-# @app.route('/goingout', methods = ['POST'])
-# def get_answers():
-#     answer_data = []
-#     strengths = request.json['strengths']
-#     flavors = request.json['flavors']
-#     spirits = request.json['spirits']
-#     answer_data.extend(strengths, flavors, spirits)
-#     print(answer_data)
-
+@app.route('/quiz', methods = ['POST'])
+def get_answers():
+    quiz_data = {}
+    strengths = request.form.getlist('strengths')
+    flavors = request.form.getlist('flavors')
+    spirits = request.form.getlist('spirits')
+    quiz_data['strengths'] = strengths
+    quiz_data['flavors'] = flavors
+    quiz_data['spirits'] = spirits
+    print(quiz_data)
+    return quiz_data
 
 @app.route('/stayin')
 def show_in_selections():
@@ -113,7 +115,24 @@ def get_search():
     if data['drinks'] == None:
         drink_search = crud.display_cocktail(drink)
         return drink_search
+    
+@app.route('/makechoices')
+def make_choices():
+    ingredients = sorted(categories.mixers)
+    cordials = sorted(categories.cordials)
+    spirits = categories.spirits_dic
+    return {'ingredients': ingredients, 'cordials' : cordials, 'spirits' : spirits}
 
+@app.route('/makesuggestions', methods = ['POST'])
+def make_cocktail():
+    make_data = []
+    ingredients = request.form.getlist('ingred')
+    make_data.append(ingredients)
+    print(make_data)
+    match_data = crud.create_cocktail_match(make_data)
+    match_data = json.dumps(match_data)
+    print(match_data)
+    return match_data
 
 
 if __name__ == "__main__":

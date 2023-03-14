@@ -4,7 +4,7 @@ spirits = ['Amareto', 'Vodka', 'Citrus Vodka', 'Strawberry-kiwi Vodka', 'Cherry 
 ]
 
 cordials = [
-  'Triple Sec', 'Blue Curacao', 'Razzmatazz', 'Sloe Gin', 'Sour Apple Shnapps', 'Kahlua', "Bailey's", 'Grand Mariner', 'Banana Liquor',
+  'Triple Sec', 'Blue Curacao', 'Razzmatazz', 'Sloe Gin', 'Sour Apple Shnapps', 'Kahlua', "Bailey's", 'Banana Liquor',
   'Butterscotch Shnapps', 'Frangelico', 'Rumchata', 'Creme de Cacao', 'Amaretto',
   'Peach Shnapps', 'Chambord', 'Creme de Menthe', 'Galliano', 'Sweet Vermouth', 'Dry Vermouth', 'Midori', 'Aperol', 'Drambuie', 'Fernet',
   'Grand Marnier', 'Hpnotiq', 'Campari', 'Peppermint Shnapps'
@@ -14,7 +14,7 @@ mixers = [
   'Sour Mix', 'Orange Juice', 'Pineapple Juice', 'Cranberry Juice', 'Milk',
   'Lime Juice', 'Coke', 'Lemon-lime Soda', 'RedBull', 'Club Soda', 'Pina Colada Mix',
   'Ginger Beer', 'Grapefruit Juice', 'Strawberry Mix', 'Grenadine', 'Tonic', 'Coffee', 'Egg Whites', 'Lemon Juice',
-  'Tomato Juice', 'Passionfruit Juice'
+  'Tomato Juice', 'Passionfruit Juice',
 ]
 
 wines = ['Champange', 'Sparkling Wine']
@@ -28,7 +28,15 @@ whiskey_like = ['Southern Comfort', 'Whiskey', 'Fireball', 'Jameson', 'Scotch', 
             'Cognac', "Jack Daniel's", 'Bourbon', 'Crown Royal', 'Yukon Jack', 'Jim Beam', 'Johnnie Walker', 'Brandy']    
 
 rums = ['Malibu', 'Dark Rum', 'Coconut Rum', 'Cachaca', 'Rum']
+gin = ['Gin']
+tequila = ['Tequila']
 
 flavors = ['sweet', 'sour', 'neutral', 'fruity', 'bitter', 'creamy', 'tropical', 'citrus', 'semi-sweet']
 strengths = ['Weak', 'Moderate', 'Strong', "So strong, it's a fancy way to pour liquor into a glass"]
 choices = ['Vodka', 'Rum', 'Gin', 'Whiskey/Bourbon', 'Tequila', 'Im Not Particular']
+
+spirits_dic= {
+    'Vodkas' : ['Cherry Vodka', 'Citrus Vodka', 'Strawberry-kiwi Vodka', 'Orange Vodka', 'Whipped Vodka','Vodka'],
+    'Whiskey and Similar' : ['Bourbon', 'Brandy', 'Crown Royal', 'Fireball', 'Jameson', "Jack Daniel's", 'Jim Beam', 'Scotch','Southern Comfort', 'Whiskey', 'Yukon Jack'],
+    'Rums' : ['Cachaca', 'Coconut Rum', 'Dark Rum', 'Malibu', 'Rum']
+ }

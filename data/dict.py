@@ -842,7 +842,7 @@ cocktail_data = {
     'Lime Juice': '1/4 part',
     'Sugar': '1/4 part',
   },
-   'Martini' :{
+   'Vodka Martini' :{
     'Strength' : "extrastrong",
     'Flavor' : ['neutral'],
     'Vodka' : '3 parts',

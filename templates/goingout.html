@@ -3,73 +3,90 @@
     {% block title %}Going Out!{% endblock %}
 
         {% block body %}
-        <div class="card-deck">
-            <div class="card">
+        <!-- card for quiz -->
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+          <div class="col">
+            <div class="card h-100">
               <img class="card-img-top" src="..." alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Take this short quiz to find cocktails compatiable to you!</h5>
                 <p class="card-text"> Out for a night on the town? Can't decide what to order? We've got you covered!</p>
               </div>
-              <form id="quiz" method="POST">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#quizmodel">
+              <form id="quiz">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quizmodel">
                     Quiz Me!
                 </button>
               </form>
             </div>
-            <div class="card">
+            </div>
+            <!-- card for random cocktail -->
+            <div class="col">
+            <div class="card h-100">
               <img class="card-img-top" src="..." alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Cocktail Routlette</h5>
                 <p class="card-text">Have us choose a random cocktail for you! Want to make a spontaneous choice? Live a bit on the edge? Try out this feature!</p>
               </div>
               <form id="random">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#randommodel">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#randommodel">
                     Random Cocktail!
                 </button>
               </form>
             </div>
-            <div class="card">
+            </div>
+            <!-- card for routlette -->
+            <div class="col">
+            <div class="card h-100">
               <img class="card-img-top" src="..." alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Shot Routlette</h5>
                 <p class="card-text">This is our danger game, proceed with caution.</p>
               </div>
               <form id="roulette">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#routlettemodel">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#routlettemodel">
                     Do Me Dirty!
                 </button>
               </form>
             </div>
+            </div>
         </div>
 
-
-        <div class="modal fade" id="quizmodel" tabindex="-1" role="dialog" aria-labelledby="quizTitle" aria-hidden="true">
+        <!-- Quiz Model -->
+        <div class="modal fade" id="quizmodel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="quizTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="question">Waiting</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="q1">What is your perferred cocktail strength?</h5>
+                    <h5 class="modal-title d-none" id="q2">What are your perferred cocktail flavors?</h5>
+                    <h5 class="modal-title d-none" id="q3">What are your perferred spirits?</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="quiz-questions" method="post">
-                    <div class="modal-body" id="question-content">
+                <form action="/quiz" id="quiz-questions" method="post">
+                    <div class="modal-body" id="question-content1">
+                    </div>
+                    <div class="modal-body d-none" id="question-content2">
+                    </div>
+                    <div class="modal-body d-none" id="question-content3">
+                    </div>
+                    <div id='buttons' class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" id="exit">Close</button>
+                      <button type="button" class="btn btn-primary" id="next">Next Question</button>
+                      <button type="submit" class="btn btn-primary d-none" data-bs-dismiss="modal" id="submit-quiz">Submit Quiz</button>
                     </div>
                 </form>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="exit">Close</button>
-                    <button type="button" class="btn btn-primary" id="next">Next Question</button>
-                </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="randommodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!-- random model -->
+        <div class="modal fade" id="randommodel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLongTitle">Cocktail Roulette</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
@@ -77,19 +94,19 @@
                   ...
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
 
-
-          <div class="modal fade" id="routlettemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <!-- roulettle model -->
+          <div class="modal fade" id="routlettemodel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLongTitle">Russian Roulette</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
@@ -97,7 +114,7 @@
                   ...
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>

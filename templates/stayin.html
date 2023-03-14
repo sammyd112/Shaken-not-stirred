@@ -2,52 +2,137 @@
 {% extends 'base.html' %}
 
 {% block title %}Staying In{% endblock %}
-    {% block body %}
-    <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Decided to stay in tonight? We've got you covered!</h5>
-            <p class="card-text">Would you to search a cocktail?</p>
-                <form id="search_cocktail" method="POST">
-                <label for ='search'>Search Here</label>
-                  <input type="text" name='drink_input' id="drink_input">
-                  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#searchcocktail">
-                    Search Cocktail
-                  </button>
-                 </form> 
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text"></p>
-          </div>
-        </div>
+{% block body %}
+<!-- card for search cocktail -->
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Decided to stay in tonight? We've got you covered!</h5>
+      <br>
+      <p class="card-text">Would you to search a cocktail?</p>
+      <form id="search_cocktail" method="POST">
+        <label for='search'>Search Here</label>
+        <input type="text" name='drink_input' id="drink_input">
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchcocktail">
+          Search Cocktail
+        </button>
+      </form>
     </div>
+  </div>
+  </div>
+  <!-- card for other function -->
+  <div class="card">
+    <div class="col">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Let's see what cocktails you can whip up at home!</h5>
+      <p class="card-text">This feature allows you to select the ingredients you already have at home,
+        and display what you are capable of making!
+      </p>
+      <form id="make_cocktail" method="POST">
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#makecocktail">
+          Select Your Ingredients
+        </button>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
+ 
 
+<!-- Search cocktail result model -->
+<div class="modal fade" id="searchcocktail" tabindex="-1" role="dialog" aria-labelledby="searchcocktailTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cocktail-name">Waiting on Results</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id='ingredients'>
+        ...Waiting on Results...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add to Favorites!</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <div class="modal fade" id="searchcocktail" tabindex="-1" role="dialog" aria-labelledby="searchcocktailTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="cocktail-name">Waiting on Results</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body" id='ingredients'>
-              ...Waiting on Results...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Add to Favorites!</button>
-            </div>
+<!-- Make Cocktail Model -->
+<div class="modal fade" id="makecocktail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="quizTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="q1">What spirits do you have?</h5>
+        <h5 class="modal-title d-none" id="q2">What cordials do you have?</h5>
+        <h5 class="modal-title d-none" id="q3">What ingredients do you have?</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/makecocktail" id="make-questions">
+        <div class="modal-body" id="question-content1">
+          <div>
+            <input type="checkbox" name="spirits" value='Gin' id="gin">
+            <label for="gin">Gin</label>
+          </div>
+          <div>
+            <input type="checkbox" name="spirits" value='Tequila' id="tequila">
+            <label for="tequila">Tequila</label>
+          </div>
+          <div id="rums">
+            Rums:
+          </div>
+          <div id="vodka">
+            Vodkas:
+          </div>
+          <div id="whiskeys">
+            Whiskeys and similar:
           </div>
         </div>
+        <div class="modal-body d-none" id="question-content2">
+        </div>
+        <div class="modal-body d-none" id="question-content3">
+        </div>
+      </form>
+      <div id='buttons' class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="exit">Close</button>
+        <button type="button" class="btn btn-primary" id="next">Next Question</button>
+        <button type="button" class="btn btn-primary d-none" data-bs-target="#s-modal" data-bs-toggle="modal"
+          data-bs-dismiss="modal" id="submit-make">Submit</button>
       </div>
-        {% endblock %}
-    {% block js %}
-    <script type="text/javascript" src="/static/inevents.js"></script>
-    {% endblock %}
+    </div>
+  </div>
+</div>
+
+<!-- Drink Suggestion Model -->
+<div class="modal fade" id="s-modal" tabindex="-1" aria-labelledby="suggestionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Drink Suggestions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- <div class="row row-cols-1 row-cols-md-3 g-4"> -->
+      <div class="modal-body">
+      <div class="row row-cols-1 row-cols-md-3 g-4" id="suggestionbody">
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script type="text/javascript" src="/static/inevents.js"></script>
+{% endblock %}

@@ -97,6 +97,108 @@ def get_random_cocktail():
     cocktail = random.choice(cocktails)
     return display_cocktail(cocktail.name)
 
+dict={'strengths': ['strong', 'extrastrong'], 'flavors' : ['neutral', 'citrus'], 'spirits' : ['vodka']}
+
+def match_cocktail_quiz(dict):
+    matched_cocktails = []
+    cocktails = get_all_cocktails()
+
+
+def create_cocktail_with_ingredients():
+    cocktails = get_all_cocktails()
+    dbcocktails=[]
+    for cocktail in cocktails:
+        recipes =  Recipe.query.filter(Recipe.cocktail_id == cocktail.cocktail_id).all()
+        ingredients = []
+        for recipe in recipes:
+            ingredient = get_ingredient_by_id(recipe.ingredient_id)
+            if ingredient.name == 'enhancements':
+                continue
+            elif ingredient.name == 'Enhancements':
+                continue
+            else:
+                ingredients.append(ingredient.name)
+        dbcocktails.append({'name' : cocktail.name, 'ingredients' : ingredients})
+    return dbcocktails
+    
+example_list = ['Vodka', 'Kahlua', 'Milk']
+def create_cocktail_match(list):
+    db_match = []
+    dbcocktails = create_cocktail_with_ingredients()
+    for dbcocktail in dbcocktails:
+        total_ingredients = len(dbcocktail['ingredients'])
+        matched_points = 0
+        missing_ingredients = dbcocktail['ingredients']
+        for items in list:
+            for x in items:
+                if x in dbcocktail['ingredients']:
+                    matched_points += 1
+                    missing_ingredients.remove(x)
+        db_match.append((dbcocktail['name'], matched_points, total_ingredients, missing_ingredients))
+    drink_match = []
+    two_ingreds = []
+    three_ingreds = []
+    four_ingreds = []
+    five_or_more = []
+    for cocktail in db_match:
+        if len(cocktail[3]) == 0:
+            if cocktail[2] == 2:
+                two_ingreds.append(cocktail)
+            if cocktail[2] == 3:
+                three_ingreds.append(cocktail)
+            if cocktail[2] == 4:
+                four_ingreds.append(cocktail)
+            if cocktail[2] >= 5:
+                five_or_more.append(cocktail)
+    drink_match.extend(five_or_more)
+    drink_match.extend(four_ingreds)
+    drink_match.extend(three_ingreds)
+    drink_match.extend(two_ingreds)
+    two_ingreds1 = []
+    three_ingreds1 = []
+    four_ingreds1 = []
+    five_or_more1 = []
+    for cocktail in db_match:
+        if len(cocktail[3]) == 1:
+            if cocktail[2] == 2:
+                two_ingreds1.append(cocktail)
+            if cocktail[2] == 3:
+                three_ingreds1.append(cocktail)
+            if cocktail[2] == 4:
+                four_ingreds1.append(cocktail)
+            if cocktail[2] >= 5:
+                five_or_more1.append(cocktail)
+    drink_match.extend(five_or_more1)
+    drink_match.extend(four_ingreds1)
+    drink_match.extend(three_ingreds1)
+    drink_match.extend(two_ingreds1)
+
+    display_match = []
+    for cocktail in drink_match:
+        cocktail_dic = display_cocktail(cocktail[0])
+        cocktail_dic['missing'] = cocktail[3]
+        display_match.append(cocktail_dic)
+
+    return display_match
+
+def create_quiz_dict():
+    dbcocktails = []
+    cocktails = create_cocktail_with_ingredients()
+    for cocktail in cocktails:
+        dbcocktail = get_cocktail_by_name(cocktail['name'])
+        print(dbcocktail)
+        add_to_cocktail = {'strength':dbcocktail.strength, 'flavors' : [dbcocktail.flavor, dbcocktail.flavor2, dbcocktail.flavor3]}
+        cocktail.update(add_to_cocktail)
+        dbcocktails.append(cocktail)
+    return dbcocktails
+
+test_list = {'strengths': ['Weak', 'Moderate'], 'flavors': ['bitter', 'creamy', 'tropical'], 'spirits': ['Vodka', 'Rum']}
+def create_quiz_results(list):
+    dbcocktails = create_quiz_dict
+    
+
+
+
 
 if __name__ == '__main__':
     from server import app
