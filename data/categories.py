@@ -1,13 +1,13 @@
-spirits = ['Amareto', 'Vodka', 'Citrus Vodka', 'Strawberry-kiwi Vodka', 'Cherry Vodka', 'Whipped Vodka', 'Tequila', 'Rum', 'Dark Rum',
+spirits = ['Vodka', 'Citrus Vodka', 'Strawberry-kiwi Vodka', 'Cherry Vodka', 'Whipped Vodka', 'Tequila', 'Rum', 'Dark Rum',
 'Coconut Rum', 'Malibu', 'Gin','Whiskey', 'Southern Comfort', 'Jameson', 'Crown Royal', 'Yukon Jack', 'Jim Beam', 'Johnnie Walker',
 'Rumpleminz', 'Jagermeister', 'Sambuca', 'Brandy', 'Scotch', 'Bourbon', 'Fireball', 'Cognac', 'Rye Whiskey', "Jack Daniel's", 'Cachaca'
 ]
 
 cordials = [
-  'Triple Sec', 'Blue Curacao', 'Razzmatazz', 'Sloe Gin', 'Sour Apple Shnapps', 'Kahlua', "Bailey's", 'Banana Liquor',
-  'Butterscotch Shnapps', 'Frangelico', 'Rumchata', 'Creme de Cacao', 'Amaretto',
-  'Peach Shnapps', 'Chambord', 'Creme de Menthe', 'Galliano', 'Sweet Vermouth', 'Dry Vermouth', 'Midori', 'Aperol', 'Drambuie', 'Fernet',
-  'Grand Marnier', 'Hpnotiq', 'Campari', 'Peppermint Shnapps'
+  'Triple Sec', 'Blue Curacao', 'Razzmatazz', 'Sloe Gin', 'Sour Apple Schnapps', 'Kahlua', "Bailey's", 'Banana Liquor',
+  'Butterscotch Schnapps', 'Frangelico', 'Rumchata', 'Creme de Cacao', 'Amaretto',
+  'Peach Schnapps', 'Chambord', 'Creme de Menthe', 'Galliano', 'Sweet Vermouth', 'Dry Vermouth', 'Midori', 'Aperol', 'Drambuie', 'Fernet',
+  'Grand Marnier', 'Hpnotiq', 'Campari', 'Peppermint Schnapps'
 ]
 
 mixers = [
@@ -33,7 +33,7 @@ tequila = ['Tequila']
 
 flavors = ['sweet', 'sour', 'neutral', 'fruity', 'bitter', 'creamy', 'tropical', 'citrus', 'semi-sweet']
 strengths = ['Weak', 'Moderate', 'Strong', "So strong, it's a fancy way to pour liquor into a glass"]
-choices = ['Vodka', 'Rum', 'Gin', 'Whiskey/Bourbon', 'Tequila', 'Im Not Particular']
+choices = ['Vodka', 'Rum', 'Gin', 'Whiskey/Bourbon', 'Tequila', "I'm Not Particular"]
 
 spirits_dic= {
     'Vodkas' : ['Cherry Vodka', 'Citrus Vodka', 'Strawberry-kiwi Vodka', 'Orange Vodka', 'Whipped Vodka','Vodka'],

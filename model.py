@@ -32,7 +32,7 @@ class Loved_Cocktail(db.Model):
                             db.ForeignKey('cocktails.cocktail_id'))
     
     def __repr__(self):
-        return f'<Loved Cocktail id={self.id} name={self.name}>'
+        return f'<Loved Cocktail id={self.id} user_id={self.user_id} cocktail_id={self.cocktail_id}>'
     
 class Cocktail(db.Model):
     """A cocktail""" 
@@ -87,6 +87,27 @@ class Ingredient(db.Model):
 
     def __repr__(self):
         return f'<Recipe ingredient_id={self.ingredient_id} name={self.name}'
+    
+class Personal_Cocktail(db.Model):
+    __tablename__ = 'personal_cocktails'
+
+    personal_id = db.Column(db.Integer,
+                              autoincrement = True,
+                              primary_key = True)
+    user_id = db.Column(db.Integer, 
+                       db.ForeignKey('users.user_id'))
+    name = db.Column(db.String)
+    ingredient1 = db.Column(db.String)
+    ingredient2 = db.Column(db.String)
+    ingredient3 = db.Column(db.String)
+    ingredient4 = db.Column(db.String)
+    ingredient5 = db.Column(db.String)
+    ingredient6 = db.Column(db.String)
+    ingredient7 = db.Column(db.String)
+    notes = db.Column(db.String)
+    
+    def __repr__(self):
+        return f'<Personal_Cocktail user_id={self.user_id} name={self.name}'
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///shakennotstirred", echo=False):

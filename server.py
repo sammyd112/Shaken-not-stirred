@@ -23,35 +23,75 @@ def show_homepage():
 def login():
     email = request.form['email']
     password = request.form['password']
-
+    data = {}
     user = crud.get_user_by_creds(email, password)
     if user == None:
-        flash('User does not exist or wrong password. Try again, or create an account.')
-        print('NO')
+        data['info'] = 'Incorrect'
     else:
         session["user_email"] = user.email
-        flash(f"Welcome back, {user.fname}!")
-        print('YES')
-    return render_template("homepage.html")
-    
+        session["fname"] = user.fname
+        data['info'] = 'login success'
+    return data
 
+@app.route('/addfavorite', methods = ['POST'])
+def add_favorite():
+    cocktail_name = request.json['drink_name']
+    print(cocktail_name)
+    if 'user_email' in session:
+        print('user in session')
+        email = session['user_email']
+        user_id = crud.get_user_by_email(email)
+        cocktail = crud.get_cocktail_by_name(cocktail_name)
+        Loved_Cocktail = crud.create_loved_cocktail(user_id, cocktail.cocktail_id)
+        db.session.add(Loved_Cocktail)
+        db.session.commit()
+    else:
+        print('user not in session')
+    return render_template("profile.html")
+
+    
 @app.route('/signup', methods = ['POST'])
 def create_user():
     email = request.form['email']
     password = request.form['password']
     fname = request.form['fname']
-
-    if crud.get_user_by_email(email):
-        flash("You can't create an account with that email. Try again.")
-        print("no")
+    data= {}
+    if crud.get_user_by_email1(email):
+        data['info'] = 'email taken'
     else:
-        user = crud.create_user(fname, email, password)
+        user = crud.create_user(fname.title(), email, password)
         db.session.add(user)
         db.session.commit()
         session["user_email"] = user.email
-        flash("Your account was created successfully!")
-        print('yes')
-    return render_template("homepage.html")
+        session["fname"] = user.fname
+        data['info'] = 'success'
+    return data
+
+@app.route('/showfavorites')
+def show_favorites():
+    if 'user_email' in session:
+        email = session['user_email']
+        user_id = crud.get_user_by_email(email)
+        return crud.display_loved_cocktails(user_id)
+    
+@app.route('/addownfavorite', methods=["POST"])
+def add_own_favorite():
+    name = request.form['name']
+    ingredient1 = request.form['ingredient1']
+    ingredient2 = request.form['ingredient2']
+    ingredient3 = request.form['ingredient3']
+    ingredient4 = request.form['ingredient4']
+    ingredient5 = request.form['ingredient5']
+    ingredient6 = request.form['ingredient6']
+    ingredient7 = request.form['ingredient7']
+    notes = request.form['notes']
+    email = session['user_email']
+    print(name, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, notes)
+    user_id = crud.get_user_by_email(email)
+    cocktail = crud.create_personal_cocktail(name.title(), user_id, ingredient1.title(), ingredient2.title(), ingredient3.title(), ingredient4.title(), ingredient5.title(), ingredient6.title(), ingredient7.title(), notes.title())
+    db.session.add(cocktail)
+    db.session.commit()
+    return render_template("profile.html")
 
 @app.route('/profile')
 def show_profile():
@@ -93,11 +133,15 @@ def get_answers():
     strengths = request.form.getlist('strengths')
     flavors = request.form.getlist('flavors')
     spirits = request.form.getlist('spirits')
+    flavors = crud.lower_list(flavors)
+    strengths = crud.lower_list(strengths)
     quiz_data['strengths'] = strengths
     quiz_data['flavors'] = flavors
     quiz_data['spirits'] = spirits
     print(quiz_data)
-    return quiz_data
+    result = crud.create_quiz_results(quiz_data)
+    print(result)
+    return result
 
 @app.route('/stayin')
 def show_in_selections():
@@ -133,6 +177,11 @@ def make_cocktail():
     match_data = json.dumps(match_data)
     print(match_data)
     return match_data
+
+@app.route('/deletefav', methods = ['POST'])
+def delete_fav():
+    cocktail_name = request.json['drink_name']
+    print(cocktail_name)
 
 
 if __name__ == "__main__":

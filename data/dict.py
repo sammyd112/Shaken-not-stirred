@@ -29,7 +29,7 @@ cocktail_data = {
     'Strength' : 'strong',
     'Flavor' : ['sour', 'semi-sweet'],
     'Vodka': '1 part',
-    'Sour Apple Shnapps': 'One part',
+    'Sour Apple Schnapps': 'One part',
     'Sour Mix': '1 part',
   },
   'Aperol Spritz': {
@@ -69,7 +69,7 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['sweet', 'creamy'],
     "Bailey's": '1 part',
-    'Butterscotch Shnapps': '1 part',
+    'Butterscotch Schnapps': '1 part',
   },
   'Bloody Mary': {
     'Strength' : 'moderate',
@@ -116,7 +116,7 @@ cocktail_data = {
     'Strength' : 'strong',
     'Flavor' : ['semi-sweet', 'citrus'],
     'Whiskey': '1 part',
-    'Butterscotch Shnapps': '1 part',
+    'Butterscotch Schnapps': '1 part',
     'Orange Juice': 'in a side glass (chaser)',
   },
   'Banana Cream Pie': {
@@ -176,7 +176,7 @@ cocktail_data = {
     'Flavor' : ['sweet', 'fruity'],
     'Vodka': '1 part',
     'Amaretto': '1/2 part',
-    'Peach Shnapps': '1/2 part',
+    'Peach Schnapps': '1/2 part',
     'Cranberry Juice': '2 parts',
   },
   'Capipirinha': {
@@ -261,13 +261,13 @@ cocktail_data = {
     'Flavor' : ['sweet', 'fruity', 'citrus'],
     'Citrus Vodka': '1/2 part',
     'Rum': '1/2 part',
-    'Peach Shnapps': '1 part',
+    'Peach Schnapps': '1 part',
     'Lemon-lime Soda': '2 parts',
   },
   'Fuzzy Navel': {
     'Strength' : 'weak',
     'Flavor' : ['sweet', 'citrus', 'fruity'],
-    'Peach Shnapps': '1 part',
+    'Peach Schnapps': '1 part',
     'Orange Juice': '2 parts',
   },
   'French Connection': {
@@ -288,7 +288,7 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['semi-sweet', 'citrus', 'fruity'],
     'Gin' : '1.5 parts',
-    'Peach Shnapps' : '1/2 part',
+    'Peach Schnapps' : '1/2 part',
     'Orange Juice' : '1 part',
     },
   'Gimlet': {
@@ -348,14 +348,14 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['sour', 'semi-sweet', 'fruity'],
     'Whiskey': '1 part',
-    'Peach Shnapps': '1 part',
+    'Peach Schnapps': '1 part',
     'Sour Mix': '1 part',
   },
   'Hairy Naval': {
     'Strength' : 'moderate',
     'Flavor' : ['semi-sweet', 'citrus', 'fruity'],
     'Vodka': '1 part',
-    'Peach Shnapps': '1 part',
+    'Peach Schnapps': '1 part',
     'Orange Juice': '1 part',
   },
   'Harvy Wallbanger': {
@@ -426,8 +426,8 @@ cocktail_data = {
     'Strength' : 'strong',
     'Flavor' : ['sweet', 'fruity'],
     'Vodka': '1 part',
-    'Sour Apple Shnapps': '1/2 part',
-    'Peach Shnapps': '1/2 part',
+    'Sour Apple Schnapps': '1/2 part',
+    'Peach Schnapps': '1/2 part',
     'Cranberry Juice': '1 part',
   },
   'Juan Collins': {
@@ -588,7 +588,7 @@ cocktail_data = {
     'Strength' : 'strong',
     'Flavor' : ['sweet', 'creamy'],
     'Fireball': '1 part',
-    'Butterscotch Shnapps': '1 part',
+    'Butterscotch Schnapps': '1 part',
     "Bailey's": '1 part',
   },
   'Oil Sick': {
@@ -624,7 +624,7 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['sweet', 'creamy'],
     "Bailey's": '1 part',
-    'Peppermint Shnapps': '1/2 part',
+    'Peppermint Schnapps': '1/2 part',
     'Creme de Cacao': '1/2 part',
   },
   'Pineapple Upside Down': {
@@ -667,7 +667,7 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['semi-sweet', 'fruity'],
     'Jagermeister': '1 part',
-    'Peach Shnapps': '1 part',
+    'Peach Schnapps': '1 part',
     'Cranberry Juice': '1 part',
   },
   'Red Snapper': {
@@ -753,7 +753,7 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['sweet', 'fruity'],
     'Vodka': '1 part',
-    'Peach Shnapps': '1/2 part',
+    'Peach Schnapps': '1/2 part',
     'Orange Juice': '1 part',
     'Cranberry Juice': '1 part',
   },
@@ -830,10 +830,10 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['semi-sweet', 'fruity'],
     'Crown Royal':'1 part',
-    'Peach Shnapps':'1/2 part',
+    'Peach Schnapps':'1/2 part',
     'Cranberry Juice':'Splash',
     'RedBull':'2 parts',
-    'Enhancements':'Crown Royal and Peach Shnapps is usually dropped into the RedBull as a shot',
+    'Enhancements':'Crown Royal and Peach Schnapps is usually dropped into the RedBull as a shot',
   },
   'Vodka Gimlet': {
     'Strength' : 'extrastrong',
@@ -868,14 +868,14 @@ cocktail_data = {
     'Strength' : 'strong',
     'Flavor' : ['semi-sweet', 'sour'],
     'Crown Royal': '1 part',
-    'Sour Apple Shnapps': '1/2 part',
+    'Sour Apple Schnapps': '1/2 part',
     'Cranberry Juice': '1 part'
   },
   'Water Moccasin': {
     'Strength' : 'moderate',
     'Flavor' : ['sweet', 'sour', 'fruity'],
     'Crown Royal': '1 part',
-    'Peach Shnapps': '1/2 part',
+    'Peach Schnapps': '1/2 part',
     'Triple Sec': '1/2 part',
     'Sour Mix': '1 part'
   },
@@ -896,14 +896,14 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['semi-sweet', 'sour', 'fruity'],
     'Vodka': '1 part',
-    'Peach Shnapps': '1 part',
+    'Peach Schnapps': '1 part',
     'Sour Mix': '1 part',
   },
   'White Gummy Bear': {
     'Strength' : 'moderate',
     'Flavor' : ['sweet', 'fruity', 'tropical'],
     'Cherry Vodka': '1 part',
-    'Peach Shnapps': '1/2 part',
+    'Peach Schnapps': '1/2 part',
     'Pineapple Juice': '1/2 part',
     'Lemon-lime Soda': '1 part',
   },
@@ -911,7 +911,7 @@ cocktail_data = {
     'Strength' : 'moderate',
     'Flavor' : ['fruity', 'semi-sweet'],
     'Vodka': '1 part',
-    'Peach Shnapps': '1/2 part',
+    'Peach Schnapps': '1/2 part',
     'Cranberry Juice': '2 parts',
   }
 }

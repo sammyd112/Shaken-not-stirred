@@ -7,7 +7,6 @@
         <div class="row row-cols-1 row-cols-md-3 g-3">
           <div class="col">
             <div class="card h-100">
-              <img class="card-img-top" src="..." alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Take this short quiz to find cocktails compatiable to you!</h5>
                 <p class="card-text"> Out for a night on the town? Can't decide what to order? We've got you covered!</p>
@@ -22,7 +21,6 @@
             <!-- card for random cocktail -->
             <div class="col">
             <div class="card h-100">
-              <img class="card-img-top" src="..." alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Cocktail Routlette</h5>
                 <p class="card-text">Have us choose a random cocktail for you! Want to make a spontaneous choice? Live a bit on the edge? Try out this feature!</p>
@@ -37,7 +35,6 @@
             <!-- card for routlette -->
             <div class="col">
             <div class="card h-100">
-              <img class="card-img-top" src="..." alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Shot Routlette</h5>
                 <p class="card-text">This is our danger game, proceed with caution.</p>
@@ -73,7 +70,8 @@
                     <div id='buttons' class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal" id="exit">Close</button>
                       <button type="button" class="btn btn-primary" id="next">Next Question</button>
-                      <button type="submit" class="btn btn-primary d-none" data-bs-dismiss="modal" id="submit-quiz">Submit Quiz</button>
+                      <button type="submit" class="btn btn-primary d-none" data-bs-target="#s-modal" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" id="submit-quiz">Submit Quiz</button>
                     </div>
                 </form>
                 </div>
@@ -95,6 +93,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="favorite">Add to Favorites!</button>
                 </div>
               </div>
             </div>
@@ -105,7 +104,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Russian Roulette</h5>
+                  <h5 class="modal-title" id="exampleModalLongTitle">Shot Roulette</h5>
                   <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -119,9 +118,27 @@
               </div>
             </div>
           </div>
+      <!-- Quiz result model -->
+          <div class="modal fade" id="s-modal" tabindex="-1" aria-labelledby="suggestionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Drink Suggestions</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="suggestionbody">
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="window.location.reload()">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         {% endblock %}
         
     {% block js %}
-    <script src="/static/quiz.jsx" type="text/jsx"></script>
     <script type="text/javascript" src="/static/outevents.js"></script>
     {% endblock %}
