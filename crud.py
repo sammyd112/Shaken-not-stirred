@@ -36,6 +36,12 @@ def create_loved_cocktail(user_id, cocktail_id):
 def get_all_personal_cocktails(user_id):
     return Personal_Cocktail.query.filter(Personal_Cocktail.user_id == user_id).all()
 
+def get_personal_cocktail_by_creds(user_id, name):
+    return Personal_Cocktail.query.filter(Personal_Cocktail.name == name, Personal_Cocktail.user_id == user_id).first()
+
+def get_loved_cocktail_by_creds(user_id, cocktail_id):
+    return Loved_Cocktail.query.filter(Loved_Cocktail.user_id == user_id, Loved_Cocktail.cocktail_id == cocktail_id).first()
+
 def get_all_loved_cocktails_by_user(user_id):
     return Loved_Cocktail.query.filter(Loved_Cocktail.user_id == user_id).all()
 
@@ -95,16 +101,16 @@ def get_ingredient_by_id(ingredient_id):
     return Ingredient.query.filter(Ingredient.ingredient_id == ingredient_id).first()
     
 def display_search(drink):
-    """Display Search"""
+    """Display Search From Api"""
     name = drink["strDrink"]
     ingredients = []
     instructions = drink["strInstructions"]
     for n in range(1,15):
         ingredient = drink[f"strIngredient{n}"]
         measurement = drink[f"strMeasure{n}"]
-        if ingredient or measurement != None:
-            ingredients.append((ingredient, measurement))
+        ingredients.append((ingredient, measurement))
     return {'name' : name, 'ingredients': ingredients, 'instruction': instructions}
+
 
 def display_cocktail(name):
     cocktail = get_cocktail_by_name(name)
@@ -141,6 +147,8 @@ def create_cocktail_with_ingredients():
             if ingredient.name == 'enhancements':
                 continue
             elif ingredient.name == 'Enhancements':
+                continue
+            elif ingredient.name == 'Sugar':
                 continue
             else:
                 ingredients.append(ingredient.name)
@@ -198,13 +206,11 @@ def create_cocktail_match(list):
     drink_match.extend(four_ingreds1)
     drink_match.extend(three_ingreds1)
     drink_match.extend(two_ingreds1)
-
     display_match = []
     for cocktail in drink_match:
         cocktail_dic = display_cocktail(cocktail[0])
         cocktail_dic['missing'] = cocktail[3]
         display_match.append(cocktail_dic)
-
     return display_match
 
 def create_quiz_dict():

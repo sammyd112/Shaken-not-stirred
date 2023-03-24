@@ -47,7 +47,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="cocktail-name">Waiting on Results</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-bs-dismiss="modal" onClick="window.location.reload()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -56,7 +56,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="favorite" onClick="window.location.reload()">Add to Favorites!</button>
+        <button type="button" class="btn btn-primary" id="favorite" data-bs-dismiss="modal">Add to Favorites!</button>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
 
 <!-- Make Cocktail Model -->
 <div class="modal fade" id="makecocktail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
@@ -73,14 +73,14 @@
         <h5 class="modal-title d-none" id="q3">What ingredients do you have?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" id="question-content1">
-      <form action="/makecocktail" id="make-questions">
+      <form id="make-questions">
+        <div class="modal-body" id="question-content1">
           <div>
-            <input type="checkbox" name="spirits" value='Gin' id="gin">
+            <input type="checkbox" name="ingred" value='Gin' id="gin">
             <label for="gin">Gin</label>
           </div>
           <div>
-            <input type="checkbox" name="spirits" value='Tequila' id="tequila">
+            <input type="checkbox" name="ingred" value='Tequila' id="tequila">
             <label for="tequila">Tequila</label>
           </div>
           <div id="rums">
@@ -103,7 +103,7 @@
         <button type="button" class="btn btn-primary d-none" data-bs-target="#s-modal" data-bs-toggle="modal"
           data-bs-dismiss="modal" id="submit-make">Submit</button>
       </div>
-     </form>
+    </form>
     </div>
   </div>
 </div>
@@ -114,7 +114,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Drink Suggestions</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <a href="/stayin"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
       </div>
       <!-- <div class="row row-cols-1 row-cols-md-3 g-4"> -->
       <div class="modal-body">
@@ -122,7 +122,26 @@
       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="window.location.reload()">Close</button>
+        <a href="/stayin"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- confirm add favorite model -->
+<div class="modal fade" id="addfav" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="drinktitle">Add Favorite</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to add this Cocktail to Favorites?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addfavorite" data-bs-dismiss="modal">Add Favorite!</button>
       </div>
     </div>
   </div>

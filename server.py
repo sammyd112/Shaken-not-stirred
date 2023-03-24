@@ -11,8 +11,10 @@ import json
 
 
 app = Flask(__name__)
-app.secret_key = "SECRETSECRET"
+app.secret_key = "secretsecretsecret"
 app.jinja_env.undefined = StrictUndefined
+
+API_KEY = os.environ['GOOGLE_KEY']
 
 
 @app.route('/')
@@ -23,31 +25,39 @@ def show_homepage():
 def login():
     email = request.form['email']
     password = request.form['password']
-    data = {}
     user = crud.get_user_by_creds(email, password)
     if user == None:
-        data['info'] = 'Incorrect'
+        flash('Account does not exit or incorrect email/password', 'warning')
     else:
         session["user_email"] = user.email
         session["fname"] = user.fname
-        data['info'] = 'login success'
-    return data
+        flash(f"Welcome back, {session['fname']}", "success")
+    return render_template("homepage.html")
 
 @app.route('/addfavorite', methods = ['POST'])
 def add_favorite():
     cocktail_name = request.json['drink_name']
     print(cocktail_name)
     if 'user_email' in session:
-        print('user in session')
         email = session['user_email']
         user_id = crud.get_user_by_email(email)
-        cocktail = crud.get_cocktail_by_name(cocktail_name)
-        Loved_Cocktail = crud.create_loved_cocktail(user_id, cocktail.cocktail_id)
-        db.session.add(Loved_Cocktail)
-        db.session.commit()
+        if crud.get_cocktail_by_name(cocktail_name):
+            cocktail = crud.get_cocktail_by_name(cocktail_name)
+            Loved_Cocktail = crud.create_loved_cocktail(user_id, cocktail.cocktail_id)
+            db.session.add(Loved_Cocktail)
+            db.session.commit()
+            print('okay')
+            return {'message': ['success', f'{cocktail_name} was added to your favorites!']}
+        else:
+            name = requests.get(f"http://www.thecocktaildb.com/api/json/v1/1/search.php?s={cocktail_name}")
+            data = name.json()
+            data_d = crud.display_search()
+            cocktail = crud.create_personal_cocktail(data_d['name'], user_id, data_d['ingredients'][0], data_d['ingredients'][1], data_d['ingredients'][2], data_d['ingredients'][3], data_d['ingredients'][4], data_d['ingredients'][5], 'database', data_d['instruction'])
+            db.session.add(cocktail)
+            db.session.commit()
+            return {'message': ['success', f'{cocktail_name} was added to your favorites!']}
     else:
-        print('user not in session')
-    return render_template("profile.html")
+        return {'message': ['warning', 'Please login/sign up to add favorite']}
 
     
 @app.route('/signup', methods = ['POST'])
@@ -55,17 +65,22 @@ def create_user():
     email = request.form['email']
     password = request.form['password']
     fname = request.form['fname']
-    data= {}
     if crud.get_user_by_email1(email):
-        data['info'] = 'email taken'
+        flash('Email is already being used by another account', 'warning')
+    elif len(password) <= 6:
+        flash('Password must be at least 6 characters long', 'warning')
+    elif password.isalpha():
+        flash('Password must contain at least one number', 'warning')
+    elif email or password or fname == '' or None:
+        flash('Please make sure to fill all required fields', 'warning')
     else:
         user = crud.create_user(fname.title(), email, password)
         db.session.add(user)
         db.session.commit()
         session["user_email"] = user.email
         session["fname"] = user.fname
-        data['info'] = 'success'
-    return data
+        flash(f'Account has been successfully created, {session["fname"]}', 'success')
+    return render_template('homepage.html')
 
 @app.route('/showfavorites')
 def show_favorites():
@@ -91,7 +106,7 @@ def add_own_favorite():
     cocktail = crud.create_personal_cocktail(name.title(), user_id, ingredient1.title(), ingredient2.title(), ingredient3.title(), ingredient4.title(), ingredient5.title(), ingredient6.title(), ingredient7.title(), notes.title())
     db.session.add(cocktail)
     db.session.commit()
-    return render_template("profile.html")
+    return redirect("/profile")
 
 @app.route('/profile')
 def show_profile():
@@ -152,14 +167,16 @@ def get_search():
     drink = (request.json['drink_input']).title()
     data = requests.get(f"http://www.thecocktaildb.com/api/json/v1/1/search.php?s={drink}")
     data = data.json()
-    if data['drinks'] != None:
+    if crud.get_cocktail_by_name(drink):
+        drink_search = crud.display_cocktail(drink)
+        return drink_search
+    elif data['drinks'] != None:
         drink_data = data['drinks'][0]
         final_data = crud.display_search(drink_data)
         return final_data
-    if data['drinks'] == None:
-        drink_search = crud.display_cocktail(drink)
-        return drink_search
-    
+    else:
+        return None
+        
 @app.route('/makechoices')
 def make_choices():
     ingredients = sorted(categories.mixers)
@@ -180,8 +197,24 @@ def make_cocktail():
 
 @app.route('/deletefav', methods = ['POST'])
 def delete_fav():
-    cocktail_name = request.json['drink_name']
-    print(cocktail_name)
+    name = request.json['drink_name']
+    print(name)
+    user_id = crud.get_user_by_email(session['user_email'])
+    if crud.get_cocktail_by_name(name):
+        cocktail = crud.get_cocktail_by_name(name)
+        loved_cocktail = crud.get_loved_cocktail_by_creds(user_id, cocktail.cocktail_id)
+        db.session.delete(loved_cocktail)
+        db.session.commit() 
+    else:
+        personal_cocktail = crud.get_personal_cocktail_by_creds(user_id, name)
+        print(personal_cocktail)
+        db.session.delete(personal_cocktail)
+        db.session.commit() 
+    return redirect('/profile')
+
+@app.route('/gout')
+def get_map():
+    return render_template('maps.html', API_KEY = API_KEY)
 
 
 if __name__ == "__main__":

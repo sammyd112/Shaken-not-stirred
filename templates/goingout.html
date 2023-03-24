@@ -1,6 +1,6 @@
 <!doctype html>
 {% extends 'base.html' %}
-    {% block title %}Going Out!{% endblock %}
+    {% block title %}Already Out!{% endblock %}
 
         {% block body %}
         <!-- card for quiz -->
@@ -93,7 +93,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="favorite">Add to Favorites!</button>
+                  <button type="button" class="btn btn-primary" id="favorite" data-bs-dismiss="modal">Add to Favorites!</button>
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Shot Roulette</h5>
+                  <h5 class="modal-title" id="exampleModalLongTitle">Shot Routlette</h5>
                   <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -124,19 +124,37 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Drink Suggestions</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <a href="/goingout"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                 </div>
                 <div class="modal-body">
                 <div class="row row-cols-1 row-cols-md-3 g-4" id="suggestionbody">
                 </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="window.location.reload()">Close</button>
+                  <a href="/goingout"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></a>
                 </div>
               </div>
             </div>
           </div>
-
+      
+      <!-- confirm add favorite model -->
+<div class="modal fade" id="addfav" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="drinktitle">Add Favorite</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to add this Cocktail to Favorites?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addfavorite" data-bs-dismiss="modal">Add Favorite!</button>
+      </div>
+    </div>
+  </div>
+</div>
         {% endblock %}
         
     {% block js %}
