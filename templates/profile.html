@@ -1,0 +1,111 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% block title %}Your Profile{% endblock %}
+{% block body %}
+    <h2>Welcome to your profile, {{session['fname']}}!</h2>
+    <br>
+    <br>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Favorites</h5>
+              <p class="card-text">We've stored all the cocktails you've favorited so you can check them out again for later use!</p>
+              <button type="button" class="btn btn-primary" id="show-favorites">Click here to View Favorites!</button>
+              <button type="button" class="btn btn-primary d-none" id="hide-favorites" onClick="window.location.reload()">Hide Favorites</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Create Favorite</h5>
+              <p class="card-text">Were you out on the town and had a specialty drink you loved? Save that recipe here!</p>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newfavorite">Click here to Add Favorite!</button>
+            </div>
+          </div>
+        </div>
+    </div>
+   
+      <!-- Modal -->
+      <div class="modal fade" id="newfavorite" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Favorite To Library</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <form action="/addownfavorite" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name of Cocktail</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Smokey Bear">
+                </div>
+                <div class="mb-3">
+                    <label for="ingredient1" class="form-label">Ingredient</label>
+                    <input type="text" class="form-control" name="ingredient1" id="ingredient1" placeholder="Whiskey">
+                </div>
+                <div class="mb-3">
+                    <label for="ingredient2" class="form-label">Ingredient</label>
+                    <input type="text" class="form-control" name="ingredient2" id="ingredient2" placeholder="Rosemary Simple Syrup">
+                </div>
+                <div class="mb-3">
+                    <label for="ingredient3" class="form-label">Ingredient</label>
+                    <input type="text" class="form-control" name="ingredient3" id="ingredient3" placeholder="Orange Bitters">
+                </div>
+                <div class="mb-3">
+                    <label for="ingredient4" class="form-label">Ingredient</label>
+                    <input type="text" class="form-control" name="ingredient4" id="ingredient4" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="ingredient5" class="form-label">Ingredient</label>
+                    <input type="text" class="form-control" name="ingredient5" id="ingredient5" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="ingredient6" class="form-label">Ingredient</label>
+                    <input type="text" class="form-control" name="ingredient6" id="ingredient6" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="ingredient7" class="form-label">Ingredient</label>
+                    <input type="text" class="form-control" name="ingredient7" id="ingredient7" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Cocktail Notes</label>
+                    <textarea class="form-control" name='notes' id="notes" rows="3"></textarea>
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" id="addfavorite" data-bs-dismiss="modal" onClick="window.location.reload()">Add Favorite!</button>
+            </div>
+           </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you'd like to remove this cocktail from favorites?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+              <button type="button" class="btn btn-primary" id="confirmdelete" onClick="window.location.reload()" data-bs-dismiss="modal">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="lovedcocktails">
+
+    </div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="/static/profile.js"></script>
+{% endblock %}
