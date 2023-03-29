@@ -12,7 +12,7 @@ displayFavorites.addEventListener("click", (evt) => {
       let num = 0;
     for (const cocktail of favData['personal']){
         num += 1
-        if (cocktail['ingredients'][6] == 'database'){
+        if (cocktail['ingredients'][7] == 'database'){
           document.getElementById('lovedcocktails').innerHTML +=`<div class="col">
                                                                 <div class="card h-100">
                                                                    <div class="card-body">
@@ -38,9 +38,12 @@ displayFavorites.addEventListener("click", (evt) => {
                                                                 </div>`
         }
         for (const ingredient of cocktail ['ingredients']){
-            if (ingredient != '' || 'database'){
+          // '(,)'
+            if (ingredient != 'database'){
+              if (ingredient != "(,)"){
+              if (ingredient != ''){
                 document.getElementById(`body${num}`).innerHTML += `<li>${ingredient}</li>`;
-            } 
+            }}} 
         }
         document.getElementById(`body${num}`).innerHTML+= `</ul>`;
         document.getElementById(`body${num}`).innerHTML+= `<div>Note: ${cocktail['notes']}</div>`

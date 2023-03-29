@@ -23,7 +23,7 @@ $(document).ready(function () {
         let latt = document.getElementById('latitude_input').value = near_place.geometry.location.lat();
         let lngg = document.getElementById('longitude_input').value = near_place.geometry.location.lng();
         currentLocation = {lat: latt, lng : lngg}
-        zoomLevel = 12
+        zoomLevel = 14
         console.log(currentLocation)
         initMap()
             })

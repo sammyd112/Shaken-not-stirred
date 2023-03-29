@@ -119,8 +119,8 @@ def display_cocktail(name):
         instructions = []
         for recipe in recipes:
             ingredient = get_ingredient_by_id(recipe.ingredient_id)
-            instructions.append((ingredient.name, recipe.part))
-        return {'name' : cocktail.name, 'ingredients' : instructions}
+            instructions.append([ingredient.name, recipe.part])
+        return {'name' : cocktail.name, 'ingredients' : instructions, 'cocktail_id' : cocktail.cocktail_id}
     else:
         return {'Nothing' : name}
 
@@ -129,7 +129,6 @@ def get_random_cocktail():
     cocktail = random.choice(cocktails)
     return display_cocktail(cocktail.name)
 
-dict={'strengths': ['strong', 'extrastrong'], 'flavors' : ['neutral', 'citrus'], 'spirits' : ['vodka']}
 
 def match_cocktail_quiz(dict):
     matched_cocktails = []
@@ -144,18 +143,20 @@ def create_cocktail_with_ingredients():
         ingredients = []
         for recipe in recipes:
             ingredient = get_ingredient_by_id(recipe.ingredient_id)
-            if ingredient.name == 'enhancements':
-                continue
-            elif ingredient.name == 'Enhancements':
+            if ingredient.name == 'Enhancements':
                 continue
             elif ingredient.name == 'Sugar':
+                continue
+            elif ingredient.name == 'Limes':
+                continue
+            elif ingredient.name == 'Mint':
                 continue
             else:
                 ingredients.append(ingredient.name)
         dbcocktails.append({'name' : cocktail.name, 'ingredients' : ingredients})
     return dbcocktails
     
-example_list = ['Vodka', 'Kahlua', 'Milk']
+
 def create_cocktail_match(list):
     db_match = []
     dbcocktails = create_cocktail_with_ingredients()
@@ -218,7 +219,7 @@ def create_quiz_dict():
     cocktails = create_cocktail_with_ingredients()
     for cocktail in cocktails:
         dbcocktail = get_cocktail_by_name(cocktail['name'])
-        add_to_cocktail = {'strength':dbcocktail.strength, 'flavors' : [dbcocktail.flavor, dbcocktail.flavor2, dbcocktail.flavor3]}
+        add_to_cocktail = {'strength':dbcocktail.strength, 'flavors' : [dbcocktail.flavor, dbcocktail.flavor2, dbcocktail.flavor3], 'cocktail_id' : dbcocktail.cocktail_id}
         cocktail.update(add_to_cocktail)
         dbcocktails.append(cocktail)
     return dbcocktails
@@ -230,14 +231,7 @@ def lower_list(list):
        new_list.append(n_string)
     return new_list
 
-def upper_list(list):
-    new_list = []
-    for string in list:
-       n_string = string.upper()
-       new_list.append(n_string)
-    return new_list
 
-test_list = {'strengths': ['weak', 'moderate'], 'flavors': ['creamy', 'tropical'], 'spirits': ['Vodka', 'Rum']}
 def create_quiz_results(list):
     dbcocktails = create_quiz_dict()
     possible_matches = []
@@ -280,7 +274,6 @@ def create_quiz_results(list):
     for x in possible_matches3:
         if possible_matches3.count(x) > 1 and x not in matches:
             matches.append(x)
-    seco_tier_matches = []
     for cocktail in possible_matches3:
         if cocktail not in matches:
             matches.append(cocktail)

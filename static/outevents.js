@@ -63,7 +63,7 @@ quizsubButton.addEventListener("click", (evt) => {
       num += 1
       document.getElementById('suggestionbody').innerHTML += `<div class="col">
                                                                 <div class="card h-100 w-300">
-                                                                  <img src="..." class="card-img-top" alt="...">
+                                                                <img src="https://res.cloudinary.com/dbdyyg3uy/image/upload/v1679991595/cocktails/${cocktail['cocktail_id']}.jpg" class='center'>
                                                                   <div class="card-body">
                                                                     <h5 class="card-title" id=${num}>${cocktail['name']}</h5>
                                                                     <div class="card-text">Ingredients:</div>
@@ -103,9 +103,10 @@ randomButton.addEventListener("click", (evt) => {
     document.getElementById('random-contents').innerHTML = `<h1 id="cocktailname"> ${randomData['name']} </h1> <br>`
     document.getElementById('random-contents').innerHTML += '<div> The Ingredients are as follows: </div> <ul>'              
     for (const ingredient of randomData['ingredients']){                                                   
-    document.getElementById('random-contents').innerHTML += `<li> ${ingredient} </li>`
+    document.getElementById('random-contents').innerHTML += `<li> ${ingredient[0]} - ${ingredient[1]}</li>`
                                                         }
     document.getElementById('random-contents').innerHTML += '</ul>'
+    document.getElementById('random-contents').innerHTML += `<img src="https://res.cloudinary.com/dbdyyg3uy/image/upload/v1679991595/cocktails/${randomData['cocktail_id']}.jpg" class='center'>`
 })})
 
 

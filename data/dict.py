@@ -4,18 +4,17 @@ cocktail_data = {
     'Flavor': ['sour', 'sweet'],
     'Amaretto': '1 part',
     'Sour Mix': '1 part',
-  },
-  'Adios Motherfucker': {
+
+  },'Adios Motherfucker': {
     'Strength' : 'extrastrong',
-    'Flavor' : ['sweet', 'neutral'],
+    'Flavor' : ['semi-sweet', 'sour', 'neutral'],
     'Vodka': '1/2 part',
     'Tequila': '1/2 part',
     'Rum': '1/2 part',
     'Gin': '1/2 part',
-    'Triple Sec': '1/2 part',
-    'Sour Mix': '1/2 part',
     'Blue Curacao': '1/2 part',
-    'Razzmatazz': '1/2 part',
+    'Sour Mix': '1/2 part',
+    'Lemon-lime Soda' : '1/2 part'
   },
   'Alabama Slammer': {
     'Strength' : 'strong',
@@ -76,25 +75,14 @@ cocktail_data = {
     'Flavor' : ['neutral'],
     'Vodka': '1 part',
     'Tomato Juice': '2 parts',
-    'enhancements': 'such as pepper, horseradish, Tabasco are recommended.',
+    'Enhancements': 'such as pepper, horseradish, Tabasco are recommended.',
   },
   'Bloody Maria': {
     'Strength' : 'moderate',
     'Flavor' : ['neutral'],
     'Tequila': '1 part',
     'Tomato Juice': '2 parts',
-    'enhancements': 'such as pepper, horseradish, Tabasco are recommended',
-  },
-  'Blue Long Island': {
-    'Strength' : 'extrastrong',
-    'Flavor' : ['semi-sweet', 'neutral', 'sour'],
-    'Vodka': '1/2 part',
-    'Tequila': '1/2 part',
-    'Rum': '1/2 part',
-    'Gin': '1/2 part',
-    'Triple Sec': '1/2 part',
-    'Sour Mix': '1 part',
-    'Blue Curacao': '1/2 part',
+    'Enhancements': 'such as pepper, horseradish, Tabasco are recommended',
   },
   'Blue Hawaiian': {
     'Strength' : 'moderate',
@@ -279,10 +267,10 @@ cocktail_data = {
   'Florida Sunrise': {
     'Strength' : 'strong',
     'Flavor' : ['sweet', 'citrus', 'tropical'],
-    'Vodka': '1 part',
     'Tequila': '1 part',
     'Orange Juice': '1 part',
     'Pineapple Juice': '1 part',
+    'Grenadine' : 'splash'
   },
   'Georgia Gin': {
     'Strength' : 'moderate',
@@ -463,7 +451,7 @@ cocktail_data = {
     'Sour Mix': '1/2 Part',
   },
   'Long Island Iced Tea': {
-    'Strength' : 'strong',
+    'Strength' : 'extrastrong',
     'Flavor' : ['neutral', 'semi-sweet'],
     'Vodka': '1/2 part',
     'Tequila': '1/2 part',
@@ -507,7 +495,7 @@ cocktail_data = {
   'Margarita': {
     'Strength' : 'strong',
     'Flavor' : ['semi-sweet', 'sour', 'citrus'],
-    'Tequila': '2 part',
+    'Tequila': '2 parts',
     'Triple Sec': '1/2 part',
     'Lime Juice': '1/4 part',
     'Sour Mix': '2 part',
@@ -554,6 +542,7 @@ cocktail_data = {
     'Sugar': '1/4 part',
     'Lime Juice': '1/4 part',
     'Mint': 'Muddled',
+    'Limes' : 'Muddled',
     'Club Soda': '1 part'
   },
   'Moscow Mule': {
@@ -826,6 +815,17 @@ cocktail_data = {
     'Simple Syrup': '1/4 part',
     'Bitters': 'Splash'
   },
+  'Tokyo Tea': {
+    'Strength' : 'extrastrong',
+    'Flavor' : ['semi-sweet', 'neutral', 'sour'],
+    'Vodka': '1/2 part',
+    'Tequila': '1/2 part',
+    'Rum': '1/2 part',
+    'Gin': '1/2 part',
+    'Midori': '1/2 part',
+    'Sour Mix': '1/2 part',
+    'Lemon-lime Soda': '1/2 part',
+  },
   'Vegas Bomb': {
     'Strength' : 'moderate',
     'Flavor' : ['semi-sweet', 'fruity'],
@@ -833,7 +833,7 @@ cocktail_data = {
     'Peach Schnapps':'1/2 part',
     'Cranberry Juice':'Splash',
     'RedBull':'2 parts',
-    'Enhancements':'Crown Royal and Peach Schnapps is usually dropped into the RedBull as a shot',
+    'Enhancements':'Crown Royal and Peach Schnapps is usually dropped into the RedBull/Cranberry as a shot',
   },
   'Vodka Gimlet': {
     'Strength' : 'extrastrong',

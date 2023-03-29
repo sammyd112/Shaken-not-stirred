@@ -22,19 +22,25 @@ searchCocktail.addEventListener("submit", (evt) => {
       document.getElementById('cocktail-name').innerHTML = `<div id='cocktailname'> ${drinkData['name']}</div>`
       document.getElementById('ingredients').innerHTML = '<div> The Ingredients are as follows: </div> <ul>'              
       for (const ingredient of drinkData['ingredients']){ 
-        if (ingredient != null)  {                                              
-      document.getElementById('ingredients').innerHTML += `<li> ${ingredient} </li>`
+        if (ingredient[0] != null)  {                                              
+      document.getElementById('ingredients').innerHTML += `<li> ${ingredient[0]}, ${ingredient[1]}</li>`
         }}
-      document.getElementById('ingredients').innerHTML += `</ul>
+      document.getElementById('ingredients').innerHTML += `</ul>`
+      document.getElementById('ingredients').innerHTML +=  `<img src="https://res.cloudinary.com/dbdyyg3uy/image/upload/v1679991595/cocktails/${drinkData['cocktail_id']}.jpg" class='center'>
                                                               <br>
                                                               <div> How to make: </div>
                                                               <div> ${drinkData['instruction']} </div>`;
+      if (document.getElementById('favorite').classList.contains('disabled') == true){
+        document.getElementById('favorite').classList.remove('disabled')
+      }
     } else {
       document.getElementById('cocktail-name').innerHTML = `<div> No Result </div>`
-      document.getElementById('ingredients').innerHTML = '<div>..Check spelling or search a different cocktail..</div> <ul>'  
+      document.getElementById('ingredients').innerHTML = '<div>..Check spelling or search a different cocktail..</div> <ul>' 
+      document.getElementById('favorite').classList.add('disabled')
     }
                         
 })})
+
 
 ///Add event listener for make cocktail///
 const makeButton = document.querySelector('#make_cocktail')
@@ -108,7 +114,7 @@ submakeButton.addEventListener("click", (evt) => {
       num += 1
       document.getElementById('suggestionbody').innerHTML += `<div class="col">
                                                                 <div class="card h-100 w-300">
-                                                                  <img src="..." class="card-img-top" alt="...">
+                                                                  <img src="https://res.cloudinary.com/dbdyyg3uy/image/upload/v1679991595/cocktails/${cocktail['cocktail_id']}.jpg" class="center" alt="...">
                                                                   <div class="card-body">
                                                                     <h5 class="card-title" id="${num}">${cocktail['name']}</h5>
                                                                     <p class="card-text">Ingredients:</p>
@@ -122,7 +128,7 @@ submakeButton.addEventListener("click", (evt) => {
                                                               </div>`;
       for (const ingredient of cocktail['ingredients']){
             console.log(ingredient)
-            document.getElementById(`parts${num}`).innerHTML += `<li>${ingredient}</li>`;
+            document.getElementById(`parts${num}`).innerHTML += `<li>${ingredient[0]}-${ingredient[1]}</li>`;
       }
             document.getElementById(`parts${num}`).innerHTML += `</ul>`
           if (cocktail['missing'].length === 1){
