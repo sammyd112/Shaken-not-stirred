@@ -24,3 +24,52 @@ img {
   margin-right: auto;
   /* width: 50%; */
 }
+.nav-link {
+ color: #ec9706
+}
+.navbar-brand {
+  color: #ec9706
+ }
+ .dropdown-item {
+  color: #ec9706
+ }
+ .text {
+  color: #ec9706;
+  background-color: #4E0707
+ }
+ .dropdown-menu {
+  border-color:#ec9706;
+  background-color: rgb(42, 41, 41)
+ }
+ .card {
+  border-color: #ec9706;
+  border-width: 5px;
+  border-style: outset;
+ }
+ .card-text {
+  color: #4E0707;
+  text-align: center;
+ }
+ .card-title {
+  color: #4E0707;
+  text-align: center;
+ }
+ .btn{
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+ }
+ .textbox {
+  background: rgb(234, 210, 165);
+ }
+ .btn-primary{
+  background: rgb(137, 25, 25);
+  border-color: #ec9706
+ }
+ .modal-content {
+  border-color: #ec9706;
+  border-width: 5px;
+  border-style: outset;
+ }

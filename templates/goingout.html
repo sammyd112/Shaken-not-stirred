@@ -3,6 +3,10 @@
     {% block title %}Already Out!{% endblock %}
 
         {% block body %}
+        <br>
+        <br>
+        <br>
+        <br>
         <!-- card for quiz -->
         <div class="row row-cols-1 row-cols-md-3 g-3">
           <div class="col">
@@ -67,6 +71,7 @@
                     </div>
                     <div class="modal-body d-none" id="question-content3">
                     </div>
+                    <br>
                     <div id='buttons' class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal" id="exit">Close</button>
                       <button type="button" class="btn btn-primary" id="next">Next Question</button>
@@ -83,12 +88,12 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Cocktail Roulette</h5>
+                  <h5 class="modal-title center" id="exampleModalLongTitle">Cocktail Roulette</h5>
                   <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body" id="random-contents">
+                <div class="modal-body card-text" id="random-contents">
                   ...
                 </div>
                 <div class="modal-footer">
@@ -104,16 +109,13 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Shot Routlette</h5>
+                  <h5 class="modal-title center" id="exampleModalLongTitle">Shot Routlette</h5>
                   <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body" id="routlette-contents">
+                <div class="modal-body card-text" id="routlette-contents">
                   ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
@@ -124,7 +126,7 @@
             <div class="modal-dialog modal-dialog-centered modal-fullscreen">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Drink Suggestions</h5>
+                  <h5 class="modal-title center" id="exampleModalLabel">Drink Suggestions</h5>
                   <a href="/goingout"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                 </div>
                 <div class="modal-body">

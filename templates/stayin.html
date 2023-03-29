@@ -3,38 +3,44 @@
 
 {% block title %}Staying In{% endblock %}
 {% block body %}
-<!-- card for search cocktail -->
+
+<br>
+<br>
+<br>
+<br>
+
 <div class="row row-cols-1 row-cols-md-2 g-4">
+  <!-- card for search cocktail -->
   <div class="col">
-  <div class="card">
+  <div class="card center" style="max-width: 35rem;">
     <div class="card-body">
-      <h5 class="card-title">Decided to stay in tonight? We've got you covered!</h5>
-      <br>
-      <p class="card-text">Would you to search a cocktail?</p>
+      <h5 class="card-title">Already know what you want to make?</h5>
+      <p class="card-text">Search a cocktail to find out what you'll need to make it!</p>
+    </div>
       <form id="search_cocktail" method="POST">
-        <label for='search'>Search Here</label>
-        <input type="text" name='drink_input' id="drink_input">
+        <input class='center textbox' type="text" name='drink_input' id="drink_input">
+        <br>
         <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchcocktail">
           Search Cocktail
         </button>
       </form>
-    </div>
   </div>
   </div>
   <!-- card for homebar -->
-  <div class="card">
-    <div class="col">
+  <div class="col">
+    <div class="card center" style="max-width: 35rem;">
     <div class="card-body">
       <h5 class="card-title">Let's see what cocktails you can whip up at home!</h5>
       <p class="card-text">This feature allows you to select the ingredients you already have at home,
         and display what you are capable of making!
       </p>
+      <br>
+    </div>
       <form id="make_cocktail" method="POST">
         <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#makecocktail">
           Select Your Ingredients
         </button>
       </form>
-    </div>
   </div>
   </div>
 </div>

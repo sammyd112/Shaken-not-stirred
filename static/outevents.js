@@ -66,15 +66,22 @@ quizsubButton.addEventListener("click", (evt) => {
                                                                 <img src="https://res.cloudinary.com/dbdyyg3uy/image/upload/v1679991595/cocktails/${cocktail['cocktail_id']}.jpg" class='center'>
                                                                   <div class="card-body">
                                                                     <h5 class="card-title" id=${num}>${cocktail['name']}</h5>
+                                                                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                                                                    <div class="col">
                                                                     <div class="card-text">Ingredients:</div>
                                                                     <div class="card-text" id="ingredients${num}"></div>
-                                                                    
-                                                                    <div class="card-text">Flavors:</div>
-                                                                    <div class="card-text" id="flavors${num}"></div>
+                                                                    </div>
+                                                                    <div class="col">
                                                                     <div class="card-text">Strength:</div>
                                                                     <div class="card-text" id="strength${num}"></div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                    <div class="card-text">Flavors:</div>
+                                                                    <div class="card-text" id="flavors${num}"></div>
+                                                                    </div>
+                                                                    </div>
                                                                     <div class="card-footer text-muted">
-                                                                    <a href="#" onclick='idChange=${num}' data-bs-toggle="modal" data-bs-target="#addfav">Add to Favorites!</a>
+                                                                    <a href="#" class="center" onclick='idChange=${num}' data-bs-toggle="modal" data-bs-target="#addfav"<p style="text-align:center">Add to Favorites!</a>
                                                                     </div>
                                                                   </div>
                                                                 </div>
@@ -101,11 +108,10 @@ randomButton.addEventListener("click", (evt) => {
   .then((randomData) => {
     console.log(randomData)
     document.getElementById('random-contents').innerHTML = `<h1 id="cocktailname"> ${randomData['name']} </h1> <br>`
-    document.getElementById('random-contents').innerHTML += '<div> The Ingredients are as follows: </div> <ul>'              
+    document.getElementById('random-contents').innerHTML += '<div> The Ingredients are as follows: </div>'              
     for (const ingredient of randomData['ingredients']){                                                   
     document.getElementById('random-contents').innerHTML += `<li> ${ingredient[0]} - ${ingredient[1]}</li>`
                                                         }
-    document.getElementById('random-contents').innerHTML += '</ul>'
     document.getElementById('random-contents').innerHTML += `<img src="https://res.cloudinary.com/dbdyyg3uy/image/upload/v1679991595/cocktails/${randomData['cocktail_id']}.jpg" class='center'>`
 })})
 
@@ -119,11 +125,11 @@ routletteButton.addEventListener("click", (evt) => {
   .then((response) => response.json())
   .then((russianData) => {
     console.log(russianData)
-    document.getElementById("routlette-contents").innerHTML = `<div> Do not blame me </div> 
-                                                              <br> <ul>
-                                                              <li> Your spirit is: ${russianData['spirit']}</li>
-                                                              <li> Your coridal is: ${russianData['cordial']}</li>
-                                                              <li> Your ingredient is: ${russianData['ingredient']}</li></ul>`
+    document.getElementById("routlette-contents").innerHTML = `Do not blame me 
+                                                              <br>
+                                                              Your spirit is: ${russianData['spirit']}<br>
+                                                              Your coridal is: ${russianData['cordial']}<br>
+                                                              Your ingredient is: ${russianData['ingredient']}`
 })})
 
   // /Add Event Listener to Favorite///

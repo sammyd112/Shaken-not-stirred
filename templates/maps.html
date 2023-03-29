@@ -4,8 +4,18 @@
 
 {% block body %}
 <br>
-<h3>Use Goggle maps to find a Cocktail Bar/Club/Lounge near you!</h3>
-<br>
+
+<div class="card text-center w-75 center">
+  <div class="card-body">
+    <h5 class="card-title">Use Goggle maps to find a Cocktail Bar/Club/Lounge near you!</h5>
+    <div class="form-group card-text"><label>What is Your Location?</label>
+      <input type='text' class='form-control' id='search_input' placeholder="Type City, Street, or Address..." />
+      <input type='hidden' id='latitude_input' />
+      <input type='hidden' id='longitude_input' />
+    </div>
+    <br>
+  </div>
+</div>
 <br>
 <style>
 #search_input {font-size:18px;}
@@ -14,12 +24,6 @@
 }
 </style>
 
-<div class="form-group"><label>What is Your Location?</label>
-<input type='text' class='form-control' id='search_input' placeholder="Type City, Street, or Address..." />
-<input type='hidden' id='latitude_input' />
-<input type='hidden' id='longitude_input' />
-</div>
-<br>
 
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
@@ -28,7 +32,7 @@
        * element that contains the map. */
       #map {
         height: 95%;
-        width: 100%;
+        width: 85%;
         text-align: center;
       }
       /* Optional: Makes the sample page fill the window. */
@@ -39,7 +43,7 @@
         padding: 0;
       }
     </style>
-    <div id="map"></div>
+    <div class="center" id="map"></div>
 
 {% endblock %}
 
