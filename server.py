@@ -74,13 +74,17 @@ def create_user():
     email = request.form['email']
     password = request.form['password']
     fname = request.form['fname']
+    print(email)
+    print(fname)
     if crud.get_user_by_email1(email):
         flash('Email is already being used by another account', 'warning')
-    elif len(password) <= 6:
+    elif len(password) < 6:
         flash('Password must be at least 6 characters long', 'warning')
     elif password.isalpha():
         flash('Password must contain at least one number', 'warning')
-    elif email or password or fname == '' or None:
+    elif fname == '':
+        flash('Please make sure to fill all required fields', 'warning')
+    elif email == '':
         flash('Please make sure to fill all required fields', 'warning')
     else:
         user = crud.create_user(fname.title(), email, password)
@@ -178,11 +182,12 @@ def get_search():
     data = data.json()
     if crud.get_cocktail_by_name(drink):
         drink_search = crud.display_cocktail(drink)
+        print(drink_search)
         return drink_search
     elif data['drinks'] != None:
         drink_data = data['drinks'][0]
-        pprint(drink_data)
         final_data = crud.display_search(drink_data)
+        print(final_data)
         return final_data
     else:
         return {'nope': 'try again'}

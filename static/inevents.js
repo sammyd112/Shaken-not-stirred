@@ -22,14 +22,23 @@ searchCocktail.addEventListener("submit", (evt) => {
       document.getElementById('cocktail-name').innerHTML = `<div id='cocktailname'> ${drinkData['name']}</div>`
       document.getElementById('ingredients').innerHTML = '<div> The Ingredients are as follows: </div> <ul>'              
       for (const ingredient of drinkData['ingredients']){ 
-        if (ingredient[0] != null)  {                                              
-      document.getElementById('ingredients').innerHTML += `<li> ${ingredient[0]}, ${ingredient[1]}</li>`
-        }}
+        if (ingredient[0] != null)  {  
+          if (ingredient[1] != null){                                           
+              document.getElementById('ingredients').innerHTML += `<li> ${ingredient[0]}, ${ingredient[1]}</li>`
+          }else{
+            document.getElementById('ingredients').innerHTML += `<li> ${ingredient[0]} </li>`
+        }}}
       document.getElementById('ingredients').innerHTML += `</ul>`
+      if ("cocktail_id" in drinkData === true){
+        console.log("true1")
       document.getElementById('ingredients').innerHTML +=  `<img src="https://res.cloudinary.com/dbdyyg3uy/image/upload/v1679991595/cocktails/${drinkData['cocktail_id']}.jpg" class='center'>
-                                                              <br>
-                                                              <div> How to make: </div>
-                                                              <div> ${drinkData['instruction']} </div>`;
+                                                              <br>`
+      }
+      else if ("instruction" in drinkData === true){
+        console.log("true")
+       document.getElementById('ingredients').innerHTML += `<div> How to make: </div>
+                                                              <div> ${drinkData['instruction']} </div> <br>`;
+        }
       if (document.getElementById('favorite').classList.contains('disabled') == true){
         document.getElementById('favorite').classList.remove('disabled')
       }
@@ -123,7 +132,7 @@ submakeButton.addEventListener("click", (evt) => {
                                                                   </div>
                                                                   <br>
                                                                   <div class="card-footer text-muted">
-                                                                    <a href="#" onclick='idChange=${num}' data-bs-toggle="modal" data-bs-target="#addfav">Add to Favorites!</a>
+                                                                    <a href="#" class="center" onclick='idChange=${num}' data-bs-toggle="modal" data-bs-target="#addfav"<p style="text-align:center">Add to Favorites!</a>
                                                                 </div>
                                                               </div>`;
       for (const ingredient of cocktail['ingredients']){

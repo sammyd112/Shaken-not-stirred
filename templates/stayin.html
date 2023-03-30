@@ -52,12 +52,12 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="cocktail-name">Waiting on Results</h5>
+        <h5 class="modal-title card-text center" id="cocktail-name">Waiting on Results</h5>
         <button type="button" class="close" data-bs-dismiss="modal" onClick="window.location.reload()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id='ingredients'>
+      <div class="modal-body card-text" id='ingredients'>
         ...Waiting on Results...
       </div>
       <div class="modal-footer">
@@ -74,9 +74,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
-        <h5 class="modal-title" id="q1">What spirits do you have?</h5>
-        <h5 class="modal-title d-none" id="q2">What cordials do you have?</h5>
-        <h5 class="modal-title d-none" id="q3">What ingredients do you have?</h5>
+        <h5 class="modal-title center" id="q1">What spirits do you have?</h5>
+        <h5 class="modal-title d-none center" id="q2">What cordials do you have?</h5>
+        <h5 class="modal-title d-none center" id="q3">What ingredients do you have?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form id="make-questions">
@@ -119,7 +119,7 @@
   <div class="modal-dialog modal-dialog-centered modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Drink Suggestions</h5>
+        <h5 class="modal-title center" id="exampleModalLabel">Drink Suggestions</h5>
         <a href="/stayin"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
       </div>
       <!-- <div class="row row-cols-1 row-cols-md-3 g-4"> -->
@@ -139,12 +139,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="drinktitle">Add Favorite</h1>
+        <h1 class="modal-title fs-5 center" id="drinktitle">Add Favorite</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body card-text">
         Are you sure you want to add this Cocktail to Favorites?
       </div>
+      <br>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="addfavorite" data-bs-dismiss="modal">Add Favorite!</button>

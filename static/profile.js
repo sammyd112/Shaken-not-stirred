@@ -15,29 +15,30 @@ displayFavorites.addEventListener("click", (evt) => {
         if (cocktail['ingredients'][7] == 'database'){
           document.getElementById('lovedcocktails').innerHTML +=`<div class="col">
                                                                 <div class="card h-100">
-                                                                   <div class="card-body">
+                                                                   <div class="card-body center">
                                                                       <h5 class="card-title" id="${num}">${cocktail['name']}</h5>
-                                                                      <p class="card-text" id="body${num}"><ul></p>
+                                                                      <div class="card-text" id="body${num}"></div>
                                                                     </div>
                                                                     <div class="card-footer text-muted">
-                                                                    <a href="#" onclick='idChange=${num}' data-bs-toggle="modal" data-bs-target="#confirmModal">Remove This Favorite</a>
+                                                                    <a href="#" onclick='idChange=${num}' class="center" data-bs-toggle="modal" data-bs-target="#confirmModal" <p style="text-align:center">Remove This Favorite</a>
                                                                     </div>
                                                                   </div>
                                                                 </div>`
         } else {
         document.getElementById('lovedcocktails').innerHTML +=`<div class="col">
                                                                 <div class="card h-100">
-                                                                   <div class="card-body">
-                                                                      <h5 class="card-title" id="${num}">${cocktail['name']}</h5><span>(You Created)</span>
-                                                                      <p class="card-text" id="body${num}"><ul></p>
+                                                                   <div class="card-body center">
+                                                                      <h5 class="card-title" id="${num}">${cocktail['name']}</h5> 
+                                                                      <p class="card-title">(You Created)</p>
+                                                                      <div class="card-text" id="body${num}"><div>
                                                                     </div>
                                                                     <div class="card-footer text-muted">
-                                                                    <a href="#" onclick='idChange=${num}' data-bs-toggle="modal" data-bs-target="#confirmModal">Remove This Favorite</a>
+                                                                      <a href="#" onclick='idChange=${num}' class="center" data-bs-toggle="modal" data-bs-target="#confirmModal"<p style="text-align:center">Remove This Favorite</a>
                                                                     </div>
                                                                   </div>
                                                                 </div>`
         }
-        for (const ingredient of cocktail ['ingredients']){
+        for (const ingredient of cocktail['ingredients']){
           // '(,)'
             if (ingredient != 'database'){
               if (ingredient != "(,)"){
@@ -45,27 +46,26 @@ displayFavorites.addEventListener("click", (evt) => {
                 document.getElementById(`body${num}`).innerHTML += `<li>${ingredient}</li>`;
             }}} 
         }
-        document.getElementById(`body${num}`).innerHTML+= `</ul>`;
-        document.getElementById(`body${num}`).innerHTML+= `<div>Note: ${cocktail['notes']}</div>`
+        document.getElementById(`body${num}`).innerHTML+= `<div>Note: ${cocktail['notes']}</div>`;
     }
     for (const cocktail of favData['favorites']){
         num += 1
         document.getElementById('lovedcocktails').innerHTML += `<div class="col">
                                                               <div class="card h-100">
-                                                                <img src="..." class="card-img-top" alt="...">
-                                                                <div class="card-body">
+                                                                <img src="https://res.cloudinary.com/dbdyyg3uy/image/upload/v1679991595/cocktails/${cocktail['cocktail_id']}.jpg" class='center'>
+                                                                <div class="card-body center">
                                                                     <h5 class="card-title" id="${num}">${cocktail['name']}</h5>
-                                                                    <p class="card-text" id="body${num}"><ul></p>
+                                                                    <div class="card-text" id="body${num}"></div>
                                                                 </div>
                                                                 <div class="card-footer text-muted">
-                                                                    <a href="#" onclick='idChange=${num}' data-bs-toggle="modal" data-bs-target="#confirmModal">Remove This Favorite</a>
+                                                                    <a href="#" class="center" onclick='idChange=${num}' data-bs-toggle="modal" data-bs-target="#confirmModal" <p style="text-align:center">Remove This Favorite</a>
                                                                 </div>
                                                               </div>
                                                             </div>`
         for (const ingredient of cocktail['ingredients']){
-            document.getElementById(`body${num}`).innerHTML+= `<li>${ingredient}</li>`;
+            document.getElementById(`body${num}`).innerHTML+= `<li>${ingredient[0]} - ${ingredient[1]}</li>`;
       }
-        document.getElementById(`body${num}`).innerHTML+= `</ul>`;
+       
     }
     document.getElementById("show-favorites").classList.add("d-none");
     document.getElementById("hide-favorites").classList.remove("d-none");          

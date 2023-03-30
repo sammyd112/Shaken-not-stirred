@@ -35,7 +35,8 @@ img {
  }
  .text {
   color: #ec9706;
-  background-color: #4E0707
+  text-align: center;
+  text-shadow: 3px 3px 0px #270d0d;
  }
  .dropdown-menu {
   border-color:#ec9706;
@@ -72,4 +73,8 @@ img {
   border-color: #ec9706;
   border-width: 5px;
   border-style: outset;
+ }
+ 
+ .navbar-toggler {
+  border-color: #ec9706
  }

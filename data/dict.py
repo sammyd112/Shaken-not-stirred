@@ -498,7 +498,7 @@ cocktail_data = {
     'Tequila': '2 parts',
     'Triple Sec': '1/2 part',
     'Lime Juice': '1/4 part',
-    'Sour Mix': '2 part',
+    'Sour Mix': '2 parts',
     'Orange Juice': '1/4 part',
     'Enhancements': 'Salted Rim',
   },

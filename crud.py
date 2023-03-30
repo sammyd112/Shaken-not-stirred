@@ -105,6 +105,7 @@ def display_search(drink):
     name = drink["strDrink"]
     ingredients = []
     instructions = drink["strInstructions"]
+    photo = drink["strDrinkThumb"]
     for n in range(1,15):
         ingredient = drink[f"strIngredient{n}"]
         measurement = drink[f"strMeasure{n}"]

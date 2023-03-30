@@ -2,27 +2,29 @@
 {% extends 'base.html' %}
 {% block title %}Your Profile{% endblock %}
 {% block body %}
-    <h2>Welcome to your profile, {{session['fname']}}!</h2>
+    <h2 class="text">Welcome to your profile, {{session['fname']}}!</h2>
     <br>
     <br>
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col">
-          <div class="card">
+          <div class="card center" style="max-width: 35rem;">
             <div class="card-body">
               <h5 class="card-title">Favorites</h5>
               <p class="card-text">We've stored all the cocktails you've favorited so you can check them out again for later use!</p>
+            </div>
+            <br>
               <button type="button" class="btn btn-primary" id="show-favorites">Click here to View Favorites!</button>
               <button type="button" class="btn btn-primary d-none" id="hide-favorites" onClick="window.location.reload()">Hide Favorites</button>
-            </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
+          <div class="card center" style="max-width: 35rem;">
             <div class="card-body">
               <h5 class="card-title">Create Favorite</h5>
               <p class="card-text">Were you out on the town and had a specialty drink you loved? Save that recipe here!</p>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newfavorite">Click here to Add Favorite!</button>
             </div>
+            <br>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newfavorite">Click here to Add Favorite!</button>
           </div>
         </div>
     </div>
@@ -87,12 +89,13 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+              <h1 class="modal-title fs-5 center" id="exampleModalLabel">Confirmation</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body card-text">
               Are you sure you'd like to remove this cocktail from favorites?
             </div>
+            <br>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
               <button type="button" class="btn btn-primary" id="confirmdelete" onClick="window.location.reload()" data-bs-dismiss="modal">Confirm</button>
@@ -101,7 +104,7 @@
         </div>
       </div>
 
-
+    <br>
     <div class="row row-cols-1 row-cols-md-3 g-4" id="lovedcocktails">
 
     </div>
