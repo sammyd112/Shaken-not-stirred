@@ -46,6 +46,7 @@ img {
   border-color: #ec9706;
   border-width: 5px;
   border-style: outset;
+  background-color: rgba(250, 237, 213, 0.929);
  }
  .card-text {
   color: #4E0707;
@@ -63,7 +64,8 @@ img {
   transform: translate(-50%, -50%);
  }
  .textbox {
-  background: rgb(234, 210, 165);
+  background: rgba(118, 26, 17, 0.612);
+  color: white
  }
  .btn-primary{
   background: rgb(137, 25, 25);
@@ -73,8 +75,17 @@ img {
   border-color: #ec9706;
   border-width: 5px;
   border-style: outset;
+  background-color: rgba(250, 237, 213, 0.948);
  }
  
  .navbar-toggler {
   border-color: #ec9706
+ }
+
+ .htext {
+  color: rgb(244, 183, 84);
+  text-align: center;
+  text-shadow: 1px .5px 0px #0c0c0c;
+  opacity: 1;
+  font-weight: normal;
  }

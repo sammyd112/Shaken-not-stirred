@@ -107,7 +107,7 @@ randomButton.addEventListener("click", (evt) => {
   .then((response) => response.json())
   .then((randomData) => {
     console.log(randomData)
-    document.getElementById('random-contents').innerHTML = `<h1 id="cocktailname"> ${randomData['name']} </h1> <br>`
+    document.getElementById('random-contents').innerHTML = `<h3 id="cocktailname"> ${randomData['name']} </h3> <br>`
     document.getElementById('random-contents').innerHTML += '<div> The Ingredients are as follows: </div>'              
     for (const ingredient of randomData['ingredients']){                                                   
     document.getElementById('random-contents').innerHTML += `<li> ${ingredient[0]} - ${ingredient[1]}</li>`
@@ -125,11 +125,12 @@ routletteButton.addEventListener("click", (evt) => {
   .then((response) => response.json())
   .then((russianData) => {
     console.log(russianData)
-    document.getElementById("routlette-contents").innerHTML = `Do not blame me 
+    document.getElementById("routlette-contents").innerHTML = `Hate the player, Not the Game 
                                                               <br>
-                                                              Your spirit is: ${russianData['spirit']}<br>
-                                                              Your coridal is: ${russianData['cordial']}<br>
-                                                              Your ingredient is: ${russianData['ingredient']}`
+                                                              <br>
+                                                              Your spirit is:<strong> ${russianData['spirit']}</strong><br>
+                                                              Your coridal is:<strong> ${russianData['cordial']}</strong><br>
+                                                              Your ingredient is:<strong> ${russianData['ingredient']}</strong>`
 })})
 
   // /Add Event Listener to Favorite///

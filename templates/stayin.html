@@ -14,8 +14,8 @@
   <div class="col">
   <div class="card center" style="max-width: 35rem;">
     <div class="card-body">
-      <h5 class="card-title">Already know what you want to make?</h5>
-      <p class="card-text">Search a cocktail to find out what you'll need to make it!</p>
+      <h5 class="card-title">Cocktail Inquiry</h5>
+      <p class="card-text">Want to find out more about a specific cocktail? Search it!</p>
     </div>
       <form id="search_cocktail" method="POST">
         <input class='center textbox' type="text" name='drink_input' id="drink_input">
@@ -30,12 +30,11 @@
   <div class="col">
     <div class="card center" style="max-width: 35rem;">
     <div class="card-body">
-      <h5 class="card-title">Let's see what cocktails you can whip up at home!</h5>
-      <p class="card-text">This feature allows you to select the ingredients you already have at home,
-        and display what you are capable of making!
+      <h5 class="card-title">Cocktail DIY</h5>
+      <p class="card-text">Let's see what cocktails you can whip up at home<br> based on what you already have!
       </p>
-      <br>
     </div>
+    <br>
       <form id="make_cocktail" method="POST">
         <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#makecocktail">
           Select Your Ingredients
@@ -116,10 +115,10 @@
 
 <!-- Drink Suggestion Model -->
 <div class="modal fade" id="s-modal" tabindex="-1" aria-labelledby="suggestionModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-fullscreen">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog-warning modal-dialog-centered modal-fullscreen">
+    <div class="modal-content" style="background-color: rgb(90, 19, 19);">
       <div class="modal-header">
-        <h5 class="modal-title center" id="exampleModalLabel">Drink Suggestions</h5>
+        <h5 class="modal-title center" style="color: #ec9706;" id="exampleModalLabel">Drink Suggestions</h5>
         <a href="/stayin"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
       </div>
       <!-- <div class="row row-cols-1 row-cols-md-3 g-4"> -->
